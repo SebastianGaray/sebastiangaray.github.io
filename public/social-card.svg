@@ -1,11 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#11120f"/>
-  <g stroke="#f1f0e9" opacity=".12">
+  <rect width="1200" height="630" fill="#fdf8f8"/>
+  <g stroke="#c4c7c7">
     <path d="M0 105h1200M0 210h1200M0 315h1200M0 420h1200M0 525h1200"/>
     <path d="M100 0v630M300 0v630M500 0v630M700 0v630M900 0v630M1100 0v630"/>
   </g>
-  <path d="M0 500c150-15 190-170 330-125s200 135 350-50 265-165 520-250" fill="none" stroke="#d7ff46" stroke-width="7"/>
-  <text x="72" y="92" fill="#d7ff46" font-family="monospace" font-size="22">SEBASTIÁN GARAY / SOFTWARE ENGINEER</text>
-  <text x="72" y="270" fill="#f1f0e9" font-family="Arial,sans-serif" font-weight="700" font-size="86">Clear systems.</text>
-  <text x="72" y="360" fill="#f1f0e9" font-family="Arial,sans-serif" font-weight="700" font-size="86">Useful software.</text>
+  <rect x="68" y="67" width="1064" height="496" fill="#fdf8f8" stroke="#334155"/>
+  <text x="110" y="132" fill="#334155" font-family="monospace" font-size="20" letter-spacing="3">SOFTWARE ENGINEER / BACKEND / DATA / ML</text>
+  <text x="110" y="282" fill="#1c1b1b" font-family="Georgia,serif" font-weight="700" font-size="78">Sebastian Garay</text>
+  <text x="110" y="370" fill="#1c1b1b" font-family="Georgia,serif" font-weight="700" font-size="58">Software engineering and</text>
+  <text x="110" y="438" fill="#1c1b1b" font-family="Georgia,serif" font-weight="700" font-size="58">technical leadership.</text>
+  <path d="M110 500h980" stroke="#334155" stroke-width="4"/>
 </svg>

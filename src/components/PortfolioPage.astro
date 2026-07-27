@@ -1,0 +1,218 @@
+---
+import type { PortfolioContent } from "../content/types";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectVisual from "./ProjectVisual.astro";
+
+interface Props {
+  content: PortfolioContent;
+}
+
+const { content } = Astro.props;
+---
+
+<BaseLayout content={content}>
+  <section class="hero section-shell" id="home" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">{content.hero.eyebrow}</p>
+      <h1 id="hero-title">{content.hero.title}</h1>
+      <p class="hero-description">{content.hero.description}</p>
+      <div class="actions">
+        <a class="button primary" href="#projects">
+          {content.hero.projectAction}
+        </a>
+        <a
+          class="button secondary"
+          href="https://github.com/SebastianGaray"
+          rel="me"
+        >
+          {content.labels.github}
+        </a>
+      </div>
+    </div>
+    <aside class="hero-index" aria-label={content.hero.eyebrow}>
+      <span>06+</span>
+      <p>Backend<br />Data<br />ML</p>
+      <svg viewBox="0 0 320 420" aria-hidden="true">
+        <path d="M1 419V1h318"></path>
+        <path d="M1 315h318M1 210h318M1 105h318"></path>
+        <path d="M80 1v418M160 1v418M240 1v418"></path>
+        <circle cx="240" cy="105" r="10"></circle>
+        <circle cx="160" cy="315" r="10"></circle>
+        <path class="index-line" d="M1 360c78-12 91-92 159-45s84-151 159-210"
+        ></path>
+      </svg>
+    </aside>
+  </section>
+
+  <section
+    class="project section-block"
+    id="projects"
+    aria-labelledby="project-title"
+  >
+    <div class="section-shell">
+      <header class="section-header">
+        <p class="eyebrow">{content.project.eyebrow}</p>
+        <h2 id="project-title">{content.project.title}</h2>
+      </header>
+
+      <div class="project-layout">
+        <ProjectVisual
+          label={content.project.visualLabel}
+          legend={content.project.visualLegend}
+        />
+        <div class="project-copy">
+          <span class="chip">{content.project.synthetic}</span>
+          <p class="project-description">{content.project.description}</p>
+
+          <div>
+            <h3>{content.project.highlightsTitle}</h3>
+            <ol class="highlight-list">
+              {
+                content.project.highlights.map((highlight) => (
+                  <li>
+                    <strong>{highlight.title}</strong>
+                    <span>{highlight.description}</span>
+                  </li>
+                ))
+              }
+            </ol>
+          </div>
+
+          <div class="technology-list">
+            <span>{content.project.technologyLabel}</span>
+            <p>{content.project.technologies.join(" · ")}</p>
+          </div>
+
+          <div class="project-links">
+            <a href="https://retail-demand-intelligence.streamlit.app/">
+              {content.project.links.demo}<span aria-hidden="true"> ↗</span>
+            </a>
+            <a
+              href="https://github.com/SebastianGaray/retail-demand-intelligence"
+            >
+              {content.project.links.repository}<span aria-hidden="true">
+                ↗</span
+              >
+            </a>
+            <a
+              href="https://github.com/SebastianGaray/retail-demand-intelligence/releases/tag/v0.1.0"
+            >
+              {content.project.links.release}<span aria-hidden="true"> ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="background section-block"
+    id="about"
+    aria-labelledby="background-title"
+  >
+    <div class="section-shell two-column">
+      <header class="section-header sticky-heading">
+        <p class="eyebrow">{content.background.eyebrow}</p>
+        <h2 id="background-title">{content.background.title}</h2>
+      </header>
+      <div class="background-copy">
+        <p class="large-copy">{content.background.intro}</p>
+        <ul class="evidence-list">
+          {
+            content.background.highlights.map((highlight) => (
+              <li>{highlight}</li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="focus section-block" aria-labelledby="focus-title">
+    <div class="section-shell">
+      <header class="section-header section-heading-row">
+        <div>
+          <p class="eyebrow">{content.focus.eyebrow}</p>
+          <h2 id="focus-title">{content.focus.title}</h2>
+        </div>
+      </header>
+      <div class="focus-grid">
+        {
+          content.focus.areas.map((area, index) => (
+            <article>
+              <span class="area-number">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3>{area.title}</h3>
+              <p>{area.description}</p>
+              <small>{area.technologies}</small>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="leadership section-block" aria-labelledby="leadership-title">
+    <div class="section-shell two-column">
+      <header class="section-header">
+        <p class="eyebrow">{content.leadership.eyebrow}</p>
+        <h2 id="leadership-title">{content.leadership.title}</h2>
+      </header>
+      <div>
+        <p class="large-copy">{content.leadership.description}</p>
+        <ul class="plain-list">
+          {content.leadership.points.map((point) => <li>{point}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="credentials section-block"
+    aria-label={content.credentials.educationTitle}
+  >
+    <div class="section-shell credentials-grid">
+      <article>
+        <h2>{content.credentials.educationTitle}</h2>
+        <ul>
+          {content.credentials.education.map((item) => <li>{item}</li>)}
+        </ul>
+      </article>
+      <article>
+        <h2>{content.credentials.publicationTitle}</h2>
+        <p>{content.credentials.publication}</p>
+      </article>
+      <article>
+        <h2>{content.credentials.recognitionTitle}</h2>
+        <p>{content.credentials.recognition}</p>
+      </article>
+    </div>
+  </section>
+
+  <section
+    class="contact section-block"
+    id="contact"
+    aria-labelledby="contact-title"
+  >
+    <div class="section-shell">
+      <p class="eyebrow">{content.contact.eyebrow}</p>
+      <h2 id="contact-title">{content.contact.title}</h2>
+      <p>{content.contact.description}</p>
+      <a class="email-link" href="mailto:sebastian.garay.p@usach.cl">
+        sebastian.garay.p@usach.cl
+      </a>
+      <nav aria-label={content.contact.eyebrow}>
+        <a href="https://github.com/SebastianGaray" rel="me"
+          >{content.labels.github}</a
+        >
+        <a
+          href="https://www.linkedin.com/in/sebastián-garay-b28610195/"
+          rel="me"
+        >
+          {content.labels.linkedin}
+        </a>
+      </nav>
+    </div>
+  </section>
+</BaseLayout>

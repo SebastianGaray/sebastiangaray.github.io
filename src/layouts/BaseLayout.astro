@@ -1,69 +1,59 @@
 ---
-import Header from "../components/Header.astro";
+import type { PortfolioContent } from "../content/types";
 import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 import "../styles/global.css";
-import type { Language, Messages } from "../i18n";
 
 interface Props {
-  lang: Language;
-  messages: Messages;
-  title: string;
-  description: string;
-  alternateHref: string;
-  translationKey: string;
-  image?: string;
+  content: PortfolioContent;
 }
 
-const {
-  lang,
-  messages,
-  title,
-  description,
-  alternateHref,
-  translationKey,
-  image = "/social-card.svg",
-} = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
-const alternate = new URL(alternateHref, Astro.site);
-const defaultHref = lang === "en" ? canonical : alternate;
-const fullTitle =
-  title === "Sebastián Garay" ? title : `${title} — Sebastián Garay`;
-const imageUrl = new URL(image, Astro.site);
+const { content } = Astro.props;
+const canonical = new URL(`/${content.lang}/`, Astro.site);
+const alternateLanguage = content.lang === "en" ? "es" : "en";
+const alternate = new URL(`/${alternateLanguage}/`, Astro.site);
+const image = new URL("/social-card.svg", Astro.site);
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={content.lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <meta name="theme-color" content="#11120f" />
-    <meta name="translation-key" content={translationKey} />
+    <meta name="description" content={content.meta.description} />
+    <meta name="theme-color" content="#fdf8f8" />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang={lang} href={canonical} />
+    <link rel="alternate" hreflang={content.lang} href={canonical} />
+    <link rel="alternate" hreflang={alternateLanguage} href={alternate} />
     <link
       rel="alternate"
-      hreflang={lang === "en" ? "es" : "en"}
-      href={alternate}
+      hreflang="x-default"
+      href={new URL("/en/", Astro.site)}
     />
-    <link rel="alternate" hreflang="x-default" href={defaultHref} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={content.meta.title} />
+    <meta property="og:description" content={content.meta.description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={imageUrl} />
-    <meta property="og:locale" content={lang === "en" ? "en_US" : "es_CL"} />
+    <meta property="og:image" content={image} />
+    <meta
+      property="og:locale"
+      content={content.lang === "en" ? "en_US" : "es_CL"}
+    />
+    <meta
+      property="og:locale:alternate"
+      content={content.lang === "en" ? "es_CL" : "en_US"}
+    />
     <meta name="twitter:card" content="summary_large_image" />
-    <title>{fullTitle}</title>
+    <title>{content.meta.title}</title>
   </head>
   <body>
-    <a class="skip-link" href="#content">{messages.skip}</a>
-    <Header messages={messages} alternateHref={alternateHref} />
+    <a class="skip-link" href="#content">{content.skip}</a>
+    <Header content={content} />
     <main id="content">
       <slot />
     </main>
-    <Footer messages={messages} />
+    <Footer content={content} />
   </body>
 </html>

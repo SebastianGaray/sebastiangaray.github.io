@@ -1,6 +1,6 @@
 # sebastiangaray.github.io
 
-Bilingual personal portfolio built with Astro and deployed as a static site to GitHub Pages.
+Bilingual one-page portfolio built with Astro and deployed as a static site to GitHub Pages.
 
 ## Commands
 
@@ -12,7 +12,7 @@ npm run check
 npm run build
 ```
 
-English and Spanish copy live in separate files under `src/i18n` and `src/content`. Translated content entries share a stable `translationKey`.
+English and Spanish copy live in separate files under `src/content`.
 
 ## Deployment
 

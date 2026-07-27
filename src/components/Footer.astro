@@ -1,25 +1,28 @@
 ---
-import type { Messages } from "../i18n";
+import type { PortfolioContent } from "../content/types";
 
 interface Props {
-  messages: Messages;
+  content: PortfolioContent;
 }
 
-const { messages } = Astro.props;
+const { content } = Astro.props;
 ---
 
 <footer class="site-footer">
-  <p>{messages.footer.line}</p>
-  <div>
-    <a href="https://github.com/SebastianGaray" rel="me">GitHub</a>
-    <a href="mailto:sebastiangaray@gmail.com">Email</a>
-    <a href="https://github.com/SebastianGaray/sebastiangaray.github.io">
-      {messages.footer.source}
-    </a>
+  <div class="footer-shell">
+    <div>
+      <a class="footer-brand" href="#home">Sebastian Garay</a>
+      <small>© {new Date().getFullYear()} Sebastian Garay</small>
+    </div>
+    <nav aria-label={content.contact.eyebrow}>
+      <a href="https://github.com/SebastianGaray" rel="me">
+        {content.labels.github}
+      </a>
+      <a href="https://www.linkedin.com/in/sebastián-garay-b28610195/" rel="me">
+        {content.labels.linkedin}
+      </a>
+      <a href="mailto:sebastian.garay.p@usach.cl">{content.labels.email}</a>
+    </nav>
+    <small>{content.labels.builtWith}</small>
   </div>
-  <small
-    >© {new Date().getFullYear()} Sebastián Garay. {
-      messages.footer.rights
-    }</small
-  >
 </footer>

@@ -1,0 +1,60 @@
+---
+interface Props {
+  label: string;
+  legend: string[];
+}
+
+const { label, legend } = Astro.props;
+---
+
+<figure class="project-visual">
+  <figcaption>{label}</figcaption>
+  <svg viewBox="0 0 800 470" role="img" aria-label={label}>
+    <defs>
+      <pattern id="grid" width="80" height="58" patternUnits="userSpaceOnUse">
+        <path d="M80 0H0V58" fill="none" stroke="currentColor" opacity=".12"
+        ></path>
+      </pattern>
+      <linearGradient id="forecast-area" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#334155" stop-opacity=".24"></stop>
+        <stop offset="1" stop-color="#334155" stop-opacity="0"></stop>
+      </linearGradient>
+    </defs>
+    <rect width="800" height="470" fill="#f7f3f2"></rect>
+    <rect x="42" y="52" width="716" height="340" fill="url(#grid)"></rect>
+    <path
+      d="M42 332C88 319 108 258 151 276s64 63 111 41 53-100 101-82 65 89 111 57 53-141 110-121 72 80 174 7V392H42Z"
+      fill="url(#forecast-area)"></path>
+    <path
+      d="M42 332C88 319 108 258 151 276s64 63 111 41 53-100 101-82 65 89 111 57"
+      fill="none"
+      stroke="#1c1b1b"
+      stroke-width="4"></path>
+    <path
+      d="M474 292c45-32 53-141 110-121s72 80 174 7"
+      fill="none"
+      stroke="#334155"
+      stroke-width="4"
+      stroke-dasharray="10 8"></path>
+    <path d="M474 62V392" stroke="#747878" stroke-dasharray="5 7"></path>
+    <g fill="#1c1b1b">
+      <circle cx="151" cy="276" r="6"></circle>
+      <circle cx="363" cy="235" r="6"></circle>
+      <circle cx="474" cy="292" r="6"></circle>
+    </g>
+    <g fill="#334155">
+      <circle cx="584" cy="171" r="6"></circle>
+      <circle cx="758" cy="178" r="6"></circle>
+    </g>
+    <g fill="#515f74" font-family="JetBrains Mono, monospace" font-size="12">
+      <text x="42" y="425">T−04</text>
+      <text x="212" y="425">T−03</text>
+      <text x="382" y="425">T−02</text>
+      <text x="552" y="425">T−01</text>
+      <text x="724" y="425">T</text>
+    </g>
+  </svg>
+  <div class="visual-legend">
+    {legend.map((item, index) => <span class={`legend-${index}`}>{item}</span>)}
+  </div>
+</figure>

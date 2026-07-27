@@ -1,41 +1,70 @@
 ---
-import type { Messages } from "../i18n";
+import type { PortfolioContent } from "../content/types";
 
 interface Props {
-  messages: Messages;
-  alternateHref: string;
+  content: PortfolioContent;
 }
 
-const { messages, alternateHref } = Astro.props;
+const { content } = Astro.props;
+const alternateLanguage = content.lang === "en" ? "ES" : "EN";
 ---
 
 <header class="site-header">
-  <a
-    class="wordmark"
-    href={`/${messages.lang}/`}
-    aria-label={`Sebastián Garay — ${messages.languageName}`}
-  >
-    SG<span aria-hidden="true">/</span>
-  </a>
+  <nav class="nav-shell" aria-label={content.navLabel}>
+    <a class="brand" href="#home">Sebastian Garay</a>
 
-  <nav class="desktop-nav" aria-label={messages.navLabel}>
-    {messages.nav.map((item) => <a href={item.href}>{item.label}</a>)}
-    <a
-      class="language-link"
-      href={alternateHref}
-      hreflang={messages.lang === "en" ? "es" : "en"}
-    >
-      {messages.alternateLanguage}
-    </a>
-  </nav>
+    <div class="desktop-nav">
+      {content.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    </div>
 
-  <details class="mobile-nav">
-    <summary>{messages.menu}</summary>
-    <nav aria-label={messages.navLabel}>
-      {messages.nav.map((item) => <a href={item.href}>{item.label}</a>)}
-      <a href={alternateHref} hreflang={messages.lang === "en" ? "es" : "en"}>
-        {messages.alternateLanguage}
+    <div class="nav-actions">
+      <a
+        class="language-switch"
+        href={`${content.languageHref}#home`}
+        data-language-switch
+        hreflang={alternateLanguage.toLowerCase()}
+      >
+        <span class:list={[content.lang === "en" && "active"]}>EN</span>
+        <span aria-hidden="true">/</span>
+        <span class:list={[content.lang === "es" && "active"]}>ES</span>
       </a>
-    </nav>
-  </details>
+      <a
+        class="github-mark"
+        href="https://github.com/SebastianGaray"
+        aria-label="GitHub"
+        rel="me"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M8.7 17.7 3 12l5.7-5.7 1.4 1.4L5.8 12l4.3 4.3-1.4 1.4Zm6.6 0-1.4-1.4 4.3-4.3-4.3-4.3 1.4-1.4L21 12l-5.7 5.7Z"
+          ></path>
+        </svg>
+      </a>
+      <details class="mobile-nav">
+        <summary>{content.menu}</summary>
+        <div>
+          {content.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+        </div>
+      </details>
+    </div>
+  </nav>
 </header>
+
+<script>
+  const languageSwitch = document.querySelector<HTMLAnchorElement>(
+    "[data-language-switch]",
+  );
+
+  languageSwitch?.addEventListener("click", () => {
+    const section = window.location.hash || "#home";
+    languageSwitch.href = `${languageSwitch.pathname}${section}`;
+  });
+
+  document
+    .querySelectorAll<HTMLAnchorElement>(".mobile-nav a")
+    .forEach((link) => {
+      link.addEventListener("click", () => {
+        link.closest("details")?.removeAttribute("open");
+      });
+    });
+</script>

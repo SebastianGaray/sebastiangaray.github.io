@@ -12,7 +12,7 @@ export const content = {
   navLabel: "Navegación principal",
   nav: [
     { label: "Inicio", href: "#home" },
-    { label: "Proyecto", href: "#projects" },
+    { label: "Proyectos", href: "#projects" },
     { label: "Sobre mí", href: "#about" },
     { label: "Contacto", href: "#contact" },
   ],

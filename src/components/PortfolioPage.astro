@@ -11,17 +11,9 @@ const { content } = Astro.props;
 ---
 
 <BaseLayout content={content}>
-  <div
-    class="blueprint-transition"
-    aria-hidden="true"
-    data-transition
-    data-transition-prefix={content.lang === "en"
-      ? "Assembling"
-      : "Ensamblando"}
-  >
+  <div class="blueprint-transition" aria-hidden="true" data-transition>
     <div class="blueprint-grid"></div>
     <svg data-blueprint-svg></svg>
-    <span data-transition-label></span>
   </div>
 
   <div class="page-view" id="home" data-view="home" tabindex="-1">
@@ -253,9 +245,6 @@ const { content } = Astro.props;
     const blueprint = document.querySelector<SVGElement>(
       "[data-blueprint-svg]",
     );
-    const transitionLabel = document.querySelector<HTMLElement>(
-      "[data-transition-label]",
-    );
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
@@ -279,23 +268,42 @@ const { content } = Astro.props;
       const wasHidden = target.hidden;
       target.hidden = false;
       target.classList.add("view-measuring");
-      const elements = target.querySelectorAll<HTMLElement>("[data-assembly]");
+      const elements = target.querySelectorAll<HTMLElement>(
+        "[data-assembly], [data-assembly] :is(h1, h2, h3, p, li, a, figure, svg, article, ol, ul, .chip, .technology-list, .project-links)",
+      );
       const width = window.innerWidth;
       const height = window.innerHeight;
       blueprint.setAttribute("viewBox", `0 0 ${width} ${height}`);
       blueprint.replaceChildren(
-        ...[...elements].map((element) => {
-          const rect = element.getBoundingClientRect();
-          const path = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "path",
-          );
-          path.setAttribute(
-            "d",
-            `M${rect.left},${rect.top}H${rect.right}V${Math.min(rect.bottom, height)}H${rect.left}Z`,
-          );
-          return path;
-        }),
+        ...[...elements]
+          .map((element) => element.getBoundingClientRect())
+          .filter(
+            (rect) =>
+              rect.width > 4 &&
+              rect.height > 4 &&
+              rect.bottom > 0 &&
+              rect.top < height,
+          )
+          .map((rect, index) => {
+            const path = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "path",
+            );
+            const left = Math.max(1, rect.left);
+            const right = Math.min(width - 1, rect.right);
+            const top = Math.max(1, rect.top);
+            const bottom = Math.min(height - 1, rect.bottom);
+            path.setAttribute(
+              "d",
+              [
+                `M${left},${top}H${right}V${bottom}H${left}Z`,
+                `M${left - 5},${top}H${left + 5}M${left},${top - 5}V${top + 5}`,
+                `M${right - 5},${bottom}H${right + 5}M${right},${bottom - 5}V${bottom + 5}`,
+              ].join(""),
+            );
+            path.style.animationDelay = `${Math.min(index * 18, 260)}ms`;
+            return path;
+          }),
       );
       target.classList.remove("view-measuring");
       target.hidden = wasHidden;
@@ -312,17 +320,9 @@ const { content } = Astro.props;
 
       if (animate && !reduceMotion && overlay) {
         drawTarget(target);
-        if (transitionLabel) {
-          const viewLabel =
-            document.querySelector<HTMLAnchorElement>(
-              `.desktop-nav [href="#${viewName}"]`,
-            )?.textContent ?? viewName;
-          transitionLabel.textContent =
-            `${overlay.dataset.transitionPrefix} / ${viewLabel}`.toUpperCase();
-        }
         document.body.classList.add("is-transitioning");
         overlay.classList.add("active");
-        await new Promise((resolve) => window.setTimeout(resolve, 720));
+        await new Promise((resolve) => window.setTimeout(resolve, 820));
       }
 
       views.forEach((view, name) => {

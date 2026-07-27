@@ -869,56 +869,18 @@ h3 {
 
   .hero-index {
     min-height: 29rem;
-    position: relative;
     display: block;
     overflow: hidden;
-    background: var(--color-surface-low);
     border: 1px solid var(--color-border);
     animation: enter 600ms 120ms ease both;
   }
 
-  .hero-index > span {
-    position: absolute;
-    z-index: 2;
-    top: 1.5rem;
-    left: 1.5rem;
-    font-family: var(--font-display);
-    font-size: 5rem;
-    font-weight: 700;
-    letter-spacing: -0.06em;
-  }
-
-  .hero-index p {
-    position: absolute;
-    z-index: 2;
-    right: 1.5rem;
-    bottom: 1rem;
-    color: var(--color-muted);
-    font: 0.7rem/1.8 var(--font-mono);
-    text-align: right;
-    text-transform: uppercase;
-  }
-
-  .hero-index svg {
+  .hero-index img {
     width: 100%;
     height: 100%;
-    position: absolute;
-    inset: 0;
-    fill: none;
-    stroke: var(--color-border);
-  }
-
-  .hero-index circle {
-    fill: var(--color-accent);
-    stroke: none;
-  }
-
-  .hero-index .index-line {
-    stroke: var(--color-accent);
-    stroke-width: 3;
-    stroke-dasharray: 700;
-    stroke-dashoffset: 700;
-    animation: draw 1.2s 300ms ease forwards;
+    display: block;
+    object-fit: cover;
+    object-position: center;
   }
 
   .sticky-heading {

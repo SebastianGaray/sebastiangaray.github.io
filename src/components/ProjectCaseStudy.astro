@@ -1,0 +1,65 @@
+---
+import { getCollection, render, type CollectionEntry } from "astro:content";
+import { messages, type Language } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const lang = project.data.language as Language;
+const copy = messages[lang];
+const alternateLang = lang === "en" ? "es" : "en";
+const alternate = (await getCollection("projects")).find(
+  (entry) =>
+    entry.data.translationKey === project.data.translationKey &&
+    entry.data.language === alternateLang,
+);
+
+if (!alternate) {
+  throw new Error(`Missing translation for ${project.data.translationKey}`);
+}
+
+const base = lang === "en" ? "/en/projects" : "/es/proyectos";
+const alternateBase = alternateLang === "en" ? "/en/projects" : "/es/proyectos";
+const alternateHref = `${alternateBase}/${alternate.data.slug}/`;
+const { Content } = await render(project);
+---
+
+<BaseLayout
+  lang={lang}
+  messages={copy}
+  title={project.data.title}
+  description={project.data.description}
+  alternateHref={alternateHref}
+  translationKey={project.data.translationKey}
+>
+  <article class="case-study">
+    <header class="case-study-header">
+      <a class="back-link" href={`${base}/`}>← {copy.caseStudy.back}</a>
+      <p class="eyebrow">{project.data.period} · {project.data.role}</p>
+      <h1>{project.data.title}</h1>
+      <p class="case-study-lead">{project.data.description}</p>
+    </header>
+
+    <dl class="meta">
+      <div>
+        <dt>{copy.caseStudy.role}</dt>
+        <dd>{project.data.role}</dd>
+      </div>
+      <div>
+        <dt>{copy.caseStudy.period}</dt>
+        <dd>{project.data.period}</dd>
+      </div>
+      <div>
+        <dt>{copy.caseStudy.stack}</dt>
+        <dd>{project.data.stack.join(" · ")}</dd>
+      </div>
+    </dl>
+
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

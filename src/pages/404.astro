@@ -1,0 +1,20 @@
+---
+import { en } from "../i18n/en";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  lang="en"
+  messages={en}
+  title={en.notFound.title}
+  description={en.notFound.description}
+  alternateHref="/es/"
+  translationKey="not-found"
+>
+  <section class="not-found">
+    <strong>ERROR / 404</strong>
+    <h1>{en.notFound.title}</h1>
+    <p>{en.notFound.description}</p>
+    <p><a class="button" href="/en/">{en.notFound.action}</a></p>
+  </section>
+</BaseLayout>

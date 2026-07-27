@@ -1,0 +1,41 @@
+---
+import type { Messages } from "../i18n";
+
+interface Props {
+  messages: Messages;
+  alternateHref: string;
+}
+
+const { messages, alternateHref } = Astro.props;
+---
+
+<header class="site-header">
+  <a
+    class="wordmark"
+    href={`/${messages.lang}/`}
+    aria-label={`Sebastián Garay — ${messages.languageName}`}
+  >
+    SG<span aria-hidden="true">/</span>
+  </a>
+
+  <nav class="desktop-nav" aria-label={messages.navLabel}>
+    {messages.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+    <a
+      class="language-link"
+      href={alternateHref}
+      hreflang={messages.lang === "en" ? "es" : "en"}
+    >
+      {messages.alternateLanguage}
+    </a>
+  </nav>
+
+  <details class="mobile-nav">
+    <summary>{messages.menu}</summary>
+    <nav aria-label={messages.navLabel}>
+      {messages.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      <a href={alternateHref} hreflang={messages.lang === "en" ? "es" : "en"}>
+        {messages.alternateLanguage}
+      </a>
+    </nav>
+  </details>
+</header>

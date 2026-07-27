@@ -1,0 +1,25 @@
+---
+import type { Messages } from "../i18n";
+
+interface Props {
+  messages: Messages;
+}
+
+const { messages } = Astro.props;
+---
+
+<footer class="site-footer">
+  <p>{messages.footer.line}</p>
+  <div>
+    <a href="https://github.com/SebastianGaray" rel="me">GitHub</a>
+    <a href="mailto:sebastiangaray@gmail.com">Email</a>
+    <a href="https://github.com/SebastianGaray/sebastiangaray.github.io">
+      {messages.footer.source}
+    </a>
+  </div>
+  <small
+    >© {new Date().getFullYear()} Sebastián Garay. {
+      messages.footer.rights
+    }</small
+  >
+</footer>

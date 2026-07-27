@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { Messages } from "../i18n";
+
+interface Props {
+  projects: CollectionEntry<"projects">[];
+  messages: Messages;
+}
+
+const { projects, messages } = Astro.props;
+const base = messages.lang === "en" ? "/en/projects" : "/es/proyectos";
+---
+
+<div class="project-list">
+  {
+    projects.map((project, index) => (
+      <article class="project-row">
+        <span class="project-index" aria-hidden="true">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <div>
+          <h2>
+            <a href={`${base}/${project.data.slug}/`}>{project.data.title}</a>
+          </h2>
+          <p>{project.data.description}</p>
+          <ul class="tag-list" aria-label={messages.caseStudy.stack}>
+            {project.data.stack.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <a class="arrow-link" href={`${base}/${project.data.slug}/`}>
+          {messages.projects.read}
+          <span aria-hidden="true"> ↗</span>
+        </a>
+      </article>
+    ))
+  }
+</div>

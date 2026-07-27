@@ -1,0 +1,85 @@
+---
+import { getCollection } from "astro:content";
+import type { Messages } from "../i18n";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroSignal from "./HeroSignal.astro";
+import ProjectList from "./ProjectList.astro";
+
+interface Props {
+  messages: Messages;
+  alternateHref: string;
+}
+
+const { messages, alternateHref } = Astro.props;
+const projects = (await getCollection("projects"))
+  .filter(
+    (entry) => entry.data.language === messages.lang && entry.data.featured,
+  )
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+const openSource = (await getCollection("openSource"))
+  .filter(
+    (entry) => entry.data.language === messages.lang && entry.data.featured,
+  )
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+const projectPath = messages.lang === "en" ? "/en/projects/" : "/es/proyectos/";
+const aboutPath = messages.lang === "en" ? "/en/about/" : "/es/sobre-mi/";
+---
+
+<BaseLayout
+  lang={messages.lang}
+  messages={messages}
+  title="Sebastián Garay"
+  description={messages.home.description}
+  alternateHref={alternateHref}
+  translationKey="home"
+>
+  <section class="hero">
+    <div class="hero-inner">
+      <HeroSignal />
+      <p class="eyebrow">{messages.home.eyebrow}</p>
+      <h1>{messages.home.title}</h1>
+      <p class="hero-copy">{messages.home.description}</p>
+      <div class="actions">
+        <a class="button" href={projectPath}>{messages.home.primaryAction}</a>
+        <a class="button secondary" href={aboutPath}
+          >{messages.home.secondaryAction}</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="selected-work">
+    <div class="section-heading">
+      <h2 id="selected-work">{messages.home.selected}</h2>
+      <p>{messages.home.selectedIntro}</p>
+    </div>
+    <ProjectList projects={projects} messages={messages} />
+  </section>
+
+  <section class="section" aria-labelledby="open-source">
+    <div class="section-heading">
+      <h2 id="open-source">{messages.home.openSource}</h2>
+      <p>{messages.home.openSourceIntro}</p>
+    </div>
+    <div class="open-source-list">
+      {
+        openSource.map((entry) => (
+          <article class="open-source-item">
+            <h2>{entry.data.title}</h2>
+            <p>{entry.data.description}</p>
+            <a href={entry.data.repository}>
+              {messages.openSource.repository} ↗
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="final-cta" aria-labelledby="contact">
+    <h2 id="contact">{messages.home.contact}</h2>
+    <a class="button" href="mailto:sebastiangaray@gmail.com"
+      >{messages.home.contactAction}</a
+    >
+  </section>
+</BaseLayout>

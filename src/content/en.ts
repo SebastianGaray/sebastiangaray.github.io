@@ -12,7 +12,7 @@ export const content = {
   navLabel: "Main navigation",
   nav: [
     { label: "Home", href: "#home" },
-    { label: "Projects", href: "#projects" },
+    { label: "Demos", href: "#projects" },
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
   ],
@@ -23,10 +23,10 @@ export const content = {
       "Software engineer focused on backend systems, data, machine learning and technical leadership.",
     description:
       "I build maintainable systems that connect business needs, software architecture and delivery.",
-    projectAction: "View project",
+    projectAction: "View demo",
   },
   project: {
-    eyebrow: "Featured project",
+    eyebrow: "Featured demo",
     title: "Retail Demand Intelligence",
     description:
       "A retail demand forecasting and inventory-risk application built with synthetic data. It combines reproducible analysis with interfaces for exploration and local integration.",

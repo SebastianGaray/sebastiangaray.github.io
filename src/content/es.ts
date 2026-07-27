@@ -12,7 +12,7 @@ export const content = {
   navLabel: "Navegación principal",
   nav: [
     { label: "Inicio", href: "#home" },
-    { label: "Proyectos", href: "#projects" },
+    { label: "Demos", href: "#projects" },
     { label: "Sobre mí", href: "#about" },
     { label: "Contacto", href: "#contact" },
   ],
@@ -23,10 +23,10 @@ export const content = {
       "Ingeniero de software enfocado en sistemas backend, datos, machine learning y liderazgo técnico.",
     description:
       "Construyo sistemas mantenibles que conectan necesidades de negocio, arquitectura de software y entrega.",
-    projectAction: "Ver proyecto",
+    projectAction: "Ver demo",
   },
   project: {
-    eyebrow: "Proyecto destacado",
+    eyebrow: "Demo destacada",
     title: "Retail Demand Intelligence",
     description:
       "Una aplicación de pronóstico de demanda y riesgo de inventario construida con datos sintéticos. Combina análisis reproducible con interfaces para exploración e integración local.",
@@ -48,7 +48,7 @@ export const content = {
       {
         title: "Dashboard bilingüe",
         description:
-          "La interfaz Streamlit permite explorar el proyecto en inglés y español.",
+          "La interfaz Streamlit permite explorar la demo en inglés y español.",
       },
       {
         title: "API local",

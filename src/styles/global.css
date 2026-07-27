@@ -869,6 +869,7 @@ h3 {
 
   .hero-index {
     min-height: 29rem;
+    position: relative;
     display: block;
     overflow: hidden;
     border: 1px solid var(--color-border);
@@ -878,6 +879,8 @@ h3 {
   .hero-index img {
     width: 100%;
     height: 100%;
+    position: absolute;
+    inset: 0;
     display: block;
     object-fit: cover;
     object-position: center;

@@ -61,7 +61,7 @@ export const content = {
   },
   background: {
     eyebrow: "Professional background",
-    title: "Engineering for systems that need to keep working.",
+    title: "Professional experience",
     intro:
       "More than six years across backend and full-stack work, applied machine learning and retail systems exposed to Cyber and Christmas demand peaks.",
     highlights: [
@@ -73,7 +73,7 @@ export const content = {
   },
   focus: {
     eyebrow: "Technical focus",
-    title: "Depth where software, data and delivery meet.",
+    title: "Technical areas",
     areas: [
       {
         title: "Backend and Software Engineering",
@@ -103,7 +103,7 @@ export const content = {
   },
   leadership: {
     eyebrow: "Leadership and teaching",
-    title: "Technical direction grounded in shared understanding.",
+    title: "Leadership and teaching",
     description:
       "I connect engineering decisions with business constraints, help teams deliver maintainable software and teach technical topics with practical context.",
     points: [
@@ -128,7 +128,7 @@ export const content = {
   },
   contact: {
     eyebrow: "Contact",
-    title: "Let’s discuss the engineering problem.",
+    title: "Contact",
     description:
       "Email is the most direct way to reach me. My public work and professional profile are also available below.",
   },

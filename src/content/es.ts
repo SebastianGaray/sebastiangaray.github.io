@@ -61,7 +61,7 @@ export const content = {
   },
   background: {
     eyebrow: "Trayectoria profesional",
-    title: "Ingeniería para sistemas que deben seguir funcionando.",
+    title: "Experiencia profesional",
     intro:
       "Más de seis años en desarrollo backend y full-stack, machine learning aplicado y sistemas de retail expuestos a picos de demanda de Cyber y Navidad.",
     highlights: [
@@ -73,7 +73,7 @@ export const content = {
   },
   focus: {
     eyebrow: "Foco técnico",
-    title: "Profundidad donde software, datos y entrega se encuentran.",
+    title: "Áreas técnicas",
     areas: [
       {
         title: "Backend e Ingeniería de Software",
@@ -103,7 +103,7 @@ export const content = {
   },
   leadership: {
     eyebrow: "Liderazgo y enseñanza",
-    title: "Dirección técnica basada en un entendimiento compartido.",
+    title: "Liderazgo y docencia",
     description:
       "Conecto decisiones de ingeniería con restricciones de negocio, ayudo a los equipos a entregar software mantenible y enseño temas técnicos con contexto práctico.",
     points: [
@@ -129,7 +129,7 @@ export const content = {
   },
   contact: {
     eyebrow: "Contacto",
-    title: "Conversemos sobre el problema de ingeniería.",
+    title: "Contacto",
     description:
       "El correo es la forma más directa de contactarme. Mi trabajo público y perfil profesional también están disponibles a continuación.",
   },

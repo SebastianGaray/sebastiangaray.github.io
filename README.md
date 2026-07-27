@@ -1,6 +1,6 @@
 # sebastiangaray.github.io
 
-Bilingual one-page portfolio built with Astro and deployed as a static site to GitHub Pages.
+Bilingual portfolio with animated view transitions, built with Astro and deployed as a static site to GitHub Pages.
 
 ## Commands
 

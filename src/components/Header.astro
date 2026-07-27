@@ -11,10 +11,16 @@ const alternateLanguage = content.lang === "en" ? "ES" : "EN";
 
 <header class="site-header">
   <nav class="nav-shell" aria-label={content.navLabel}>
-    <a class="brand" href="#home">Sebastian Garay</a>
+    <a class="brand" href="#home" data-view-link>Sebastian Garay</a>
 
     <div class="desktop-nav">
-      {content.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      {
+        content.nav.map((item) => (
+          <a href={item.href} data-view-link>
+            {item.label}
+          </a>
+        ))
+      }
     </div>
 
     <div class="nav-actions">
@@ -43,7 +49,13 @@ const alternateLanguage = content.lang === "en" ? "ES" : "EN";
       <details class="mobile-nav">
         <summary>{content.menu}</summary>
         <div>
-          {content.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+          {
+            content.nav.map((item) => (
+              <a href={item.href} data-view-link>
+                {item.label}
+              </a>
+            ))
+          }
         </div>
       </details>
     </div>
@@ -59,12 +71,4 @@ const alternateLanguage = content.lang === "en" ? "ES" : "EN";
     const section = window.location.hash || "#home";
     languageSwitch.href = `${languageSwitch.pathname}${section}`;
   });
-
-  document
-    .querySelectorAll<HTMLAnchorElement>(".mobile-nav a")
-    .forEach((link) => {
-      link.addEventListener("click", () => {
-        link.closest("details")?.removeAttribute("open");
-      });
-    });
 </script>

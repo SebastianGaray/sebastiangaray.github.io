@@ -11,7 +11,7 @@ const { content } = Astro.props;
 <footer class="site-footer">
   <div class="footer-shell">
     <div>
-      <a class="footer-brand" href="#home">Sebastian Garay</a>
+      <a class="footer-brand" href="#home" data-view-link>Sebastian Garay</a>
       <small>© {new Date().getFullYear()} Sebastian Garay</small>
     </div>
     <nav aria-label={content.contact.eyebrow}>
@@ -21,7 +21,7 @@ const { content } = Astro.props;
       <a href="https://www.linkedin.com/in/sebastián-garay-b28610195/" rel="me">
         {content.labels.linkedin}
       </a>
-      <a href="mailto:sebastian.garay.p@usach.cl">{content.labels.email}</a>
+      <a href="mailto:sebastiangarayperez2@gmail.com">{content.labels.email}</a>
     </nav>
     <small>{content.labels.builtWith}</small>
   </div>

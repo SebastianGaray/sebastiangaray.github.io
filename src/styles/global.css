@@ -38,6 +38,10 @@ body {
   overflow-x: hidden;
 }
 
+body.is-transitioning {
+  overflow: hidden;
+}
+
 ::selection {
   background: var(--color-accent-soft);
 }
@@ -77,6 +81,89 @@ svg {
   transform: translateY(0);
 }
 
+.page-view:focus {
+  outline: none;
+}
+
+.page-view[hidden] {
+  display: none;
+}
+
+.page-view.view-measuring {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  position: fixed;
+  inset: 4rem 0 auto;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.blueprint-transition {
+  position: fixed;
+  z-index: 90;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--color-surface);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.blueprint-transition.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.blueprint-transition.leaving {
+  opacity: 0;
+}
+
+.blueprint-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(81 95 116 / 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(81 95 116 / 0.12) 1px, transparent 1px),
+    linear-gradient(rgb(81 95 116 / 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(81 95 116 / 0.07) 1px, transparent 1px);
+  background-size:
+    80px 80px,
+    80px 80px,
+    16px 16px,
+    16px 16px;
+}
+
+.blueprint-transition svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+.blueprint-transition path {
+  fill: none;
+  stroke: var(--color-accent);
+  stroke-width: 1;
+  stroke-dasharray: 2400;
+  stroke-dashoffset: 2400;
+}
+
+.blueprint-transition.active path {
+  animation: blueprint-draw 620ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.blueprint-transition > span {
+  z-index: 1;
+  padding: 0.5rem 0.7rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  font: 0.7rem var(--font-mono);
+  letter-spacing: 0.08em;
+}
+
 .section-shell,
 .nav-shell,
 .footer-shell {
@@ -112,6 +199,11 @@ svg {
 
 .desktop-nav {
   display: none;
+}
+
+.desktop-nav a.active {
+  color: var(--color-text);
+  font-weight: 700;
 }
 
 .nav-actions {
@@ -173,6 +265,11 @@ svg {
 .mobile-nav a {
   padding: 0.85rem 0.75rem;
   text-decoration: none;
+}
+
+.mobile-nav a.active {
+  background: var(--color-surface-high);
+  font-weight: 700;
 }
 
 section[id] {
@@ -275,17 +372,29 @@ h3 {
   border-top: 1px solid var(--color-border);
 }
 
+.view-section {
+  min-height: calc(100svh - 4rem);
+  padding-block: var(--section-space);
+}
+
 .section-header {
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
 .section-header h2,
-.contact h2 {
+.contact h2,
+.view-section h1,
+.contact h1 {
   max-width: 48rem;
   margin: 0;
   font-size: clamp(2.1rem, 5vw, 3.5rem);
   letter-spacing: -0.035em;
   line-height: 1.08;
+}
+
+.project-copy h2 {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
 }
 
 .project {
@@ -671,6 +780,12 @@ h3 {
   }
 }
 
+@keyframes blueprint-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @media (min-width: 48rem) {
   :root {
     --gutter: 2rem;
@@ -711,6 +826,11 @@ h3 {
 
   .site-header {
     height: 4.5rem;
+  }
+
+  .page-view.view-measuring {
+    height: calc(100vh - 4.5rem);
+    inset-block-start: 4.5rem;
   }
 
   .brand {

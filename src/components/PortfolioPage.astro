@@ -85,6 +85,10 @@ const { content } = Astro.props;
         <header class="section-header">
           <p class="eyebrow">{content.project.eyebrow}</p>
           <h1 id="project-title">{content.project.title}</h1>
+          <div class="technology-list">
+            <span>{content.project.technologyLabel}</span>
+            <p>{content.project.technologies.join(" · ")}</p>
+          </div>
         </header>
 
         <div class="project-layout">
@@ -97,25 +101,6 @@ const { content } = Astro.props;
           <div class="project-copy" data-assembly>
             <span class="chip">{content.project.synthetic}</span>
             <p class="project-description">{content.project.description}</p>
-
-            <div>
-              <h2>{content.project.highlightsTitle}</h2>
-              <ol class="highlight-list">
-                {
-                  content.project.highlights.map((highlight) => (
-                    <li>
-                      <strong>{highlight.title}</strong>
-                      <span>{highlight.description}</span>
-                    </li>
-                  ))
-                }
-              </ol>
-            </div>
-
-            <div class="technology-list">
-              <span>{content.project.technologyLabel}</span>
-              <p>{content.project.technologies.join(" · ")}</p>
-            </div>
 
             <div class="project-links">
               <a href="https://retail-demand-intelligence.streamlit.app/">
@@ -135,6 +120,20 @@ const { content } = Astro.props;
                   ↗</span
                 >
               </a>
+            </div>
+
+            <div class="project-highlights">
+              <h2>{content.project.highlightsTitle}</h2>
+              <ol class="highlight-list">
+                {
+                  content.project.highlights.map((highlight) => (
+                    <li>
+                      <strong>{highlight.title}</strong>
+                      <span>{highlight.description}</span>
+                    </li>
+                  ))
+                }
+              </ol>
             </div>
           </div>
         </div>
@@ -219,12 +218,22 @@ const { content } = Astro.props;
       </a>
       <nav aria-label={content.contact.eyebrow}>
         <a href="https://github.com/SebastianGaray" rel="me">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.9c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.6 1.1 1.6 1.1.9 1.6 2.4 1.1 2.9.9.1-.7.4-1.1.7-1.4-2.3-.3-4.6-1.1-4.6-5A3.9 3.9 0 0 1 6.7 8.7c-.1-.3-.4-1.3.1-2.7 0 0 .9-.3 2.8 1.1a9.7 9.7 0 0 1 5.1 0C16.6 5.7 17.5 6 17.5 6c.5 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1.1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.8V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"
+            ></path>
+          </svg>
           {content.labels.github}
         </a>
         <a
           href="https://www.linkedin.com/in/sebastián-garay-b28610195/"
           rel="me"
         >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M6.5 8.5H3.2V19h3.3V8.5ZM4.9 3A1.9 1.9 0 1 0 5 6.8 1.9 1.9 0 0 0 5 3ZM20.8 13c0-3.2-1.7-4.8-4-4.8a3.5 3.5 0 0 0-3.2 1.8V8.5h-3.3V19h3.3v-5.2c0-1.4.3-2.7 2-2.7 1.6 0 1.7 1.5 1.7 2.8V19h3.3l.2-6Z"
+            ></path>
+          </svg>
           {content.labels.linkedin}
         </a>
       </nav>

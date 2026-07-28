@@ -1,5 +1,6 @@
 ---
 import type { PortfolioContent } from "../content/types";
+import ThemeControl from "./ThemeControl.astro";
 
 interface Props {
   content: PortfolioContent;
@@ -24,6 +25,7 @@ const alternateLanguage = content.lang === "en" ? "ES" : "EN";
     </div>
 
     <div class="nav-actions">
+      <ThemeControl content={content} />
       <a
         class="language-switch"
         href={`${content.languageHref}#home`}

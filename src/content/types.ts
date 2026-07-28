@@ -3,6 +3,12 @@ export interface PortfolioContent {
   meta: { title: string; description: string };
   skip: string;
   menu: string;
+  theme: {
+    label: string;
+    system: string;
+    light: string;
+    dark: string;
+  };
   navLabel: string;
   nav: { label: string; href: `#${string}` }[];
   languageHref: "/en/" | "/es/";

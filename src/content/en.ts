@@ -9,6 +9,12 @@ export const content = {
   },
   skip: "Skip to content",
   menu: "Menu",
+  theme: {
+    label: "Theme",
+    system: "System",
+    light: "Light",
+    dark: "Dark",
+  },
   navLabel: "Main navigation",
   nav: [
     { label: "Home", href: "#home" },

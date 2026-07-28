@@ -23,5 +23,7 @@ jobs:
         run: npm run format:check
       - name: Check types and content
         run: npm run check
+      - name: Test theme behavior
+        run: npm test
       - name: Build
         run: npm run build

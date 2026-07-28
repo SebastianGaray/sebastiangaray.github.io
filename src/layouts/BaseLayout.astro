@@ -2,6 +2,7 @@
 import type { PortfolioContent } from "../content/types";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import themeInit from "../scripts/theme-init.js?raw";
 import "../styles/global.css";
 
 interface Props {
@@ -23,6 +24,7 @@ const image = new URL("/social-card.svg", Astro.site);
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={content.meta.description} />
     <meta name="theme-color" content="#fdf8f8" />
+    <script is:inline set:html={themeInit} />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang={content.lang} href={canonical} />
     <link rel="alternate" hreflang={alternateLanguage} href={alternate} />

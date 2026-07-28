@@ -209,9 +209,11 @@ const { content } = Astro.props;
       aria-labelledby="contact-title"
       data-assembly
     >
-      <p class="eyebrow">{content.contact.eyebrow}</p>
-      <h1 id="contact-title">{content.contact.title}</h1>
-      <p>{content.contact.description}</p>
+      <div class="contact-intro">
+        <p class="eyebrow">{content.contact.eyebrow}</p>
+        <h1 id="contact-title">{content.contact.title}</h1>
+        <p>{content.contact.description}</p>
+      </div>
       <a class="email-link" href="mailto:sebastiangarayperez2@gmail.com">
         sebastiangarayperez2@gmail.com
       </a>

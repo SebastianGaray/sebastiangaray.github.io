@@ -122,11 +122,79 @@ const { content } = Astro.props;
               </a>
             </div>
 
+            <p class="availability-note">{content.project.availability}</p>
+
             <div class="project-highlights">
               <h2>{content.project.highlightsTitle}</h2>
               <ol class="highlight-list">
                 {
                   content.project.highlights.map((highlight) => (
+                    <li>
+                      <strong>{highlight.title}</strong>
+                      <span>{highlight.description}</span>
+                    </li>
+                  ))
+                }
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="project view-section project-continuation"
+      aria-labelledby="recommendation-project-title"
+      data-assembly
+    >
+      <div class="section-shell">
+        <header class="section-header">
+          <p class="eyebrow">{content.recommendationProject.eyebrow}</p>
+          <h2 id="recommendation-project-title">
+            {content.recommendationProject.title}
+          </h2>
+          <div class="technology-list">
+            <span>{content.recommendationProject.technologyLabel}</span>
+            <p>{content.recommendationProject.technologies.join(" · ")}</p>
+          </div>
+        </header>
+        <div class="project-layout">
+          <div data-assembly>
+            <ProjectVisual
+              label={content.recommendationProject.visualLabel}
+              legend={content.recommendationProject.visualLegend}
+              variant="recommendation"
+            />
+          </div>
+          <div class="project-copy" data-assembly>
+            <span class="chip">{content.recommendationProject.synthetic}</span>
+            <p class="project-description">
+              {content.recommendationProject.description}
+            </p>
+            <div class="project-links project-links-two">
+              <a
+                href="https://sebastiangaray.github.io/retail-recommendation-lab/"
+              >
+                {content.recommendationProject.links.demo}<span
+                  aria-hidden="true"
+                >
+                  ↗</span
+                >
+              </a>
+              <a
+                href="https://github.com/SebastianGaray/retail-recommendation-lab"
+              >
+                {content.recommendationProject.links.repository}<span
+                  aria-hidden="true"
+                >
+                  ↗</span
+                >
+              </a>
+            </div>
+            <div class="project-highlights">
+              <h2>{content.recommendationProject.highlightsTitle}</h2>
+              <ol class="highlight-list">
+                {
+                  content.recommendationProject.highlights.map((highlight) => (
                     <li>
                       <strong>{highlight.title}</strong>
                       <span>{highlight.description}</span>

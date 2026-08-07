@@ -44,6 +44,8 @@ export const content = {
       repository: "Repositorio en GitHub",
       release: "Versión v0.1.0",
     },
+    availability:
+      "Alojada en Streamlit Community Cloud. Si la aplicación está suspendida, reactívala desde la pantalla de Streamlit y espera unos minutos mientras inicia.",
     highlightsTitle: "Aspectos de implementación",
     highlights: [
       {
@@ -64,6 +66,39 @@ export const content = {
     ],
     visualLabel: "Estudio de pronóstico de demanda",
     visualLegend: ["Observado", "Pronóstico", "Validación"],
+  },
+  recommendationProject: {
+    eyebrow: "Demo interactiva",
+    title: "Retail Recommendation Lab",
+    description:
+      "Un laboratorio interactivo de carrito y recomendaciones de retail construido con comportamiento de compra sintético. Conecta un pipeline reproducible en PySpark con estrategias explicables y evaluación offline sintética.",
+    synthetic: "Datos sintéticos",
+    technologyLabel: "Tecnologías",
+    technologies: ["PySpark", "Python", "Astro", "TypeScript", "Playwright"],
+    links: {
+      demo: "Demo en vivo",
+      repository: "Repositorio en GitHub",
+    },
+    highlightsTitle: "Aspectos de implementación",
+    highlights: [
+      {
+        title: "Estrategias sensibles al carrito",
+        description:
+          "Quienes visitan la demo pueden comparar recomendaciones por popularidad, coocurrencia y afinidad de categoría mientras cambia el carrito.",
+      },
+      {
+        title: "Resultados explicables",
+        description:
+          "Cada recomendación presenta una razón breve en lugar de mostrar un ranking opaco.",
+      },
+      {
+        title: "Evaluación reproducible",
+        description:
+          "Los artefactos sintéticos versionados y las métricas offline se generan mediante un pipeline determinista.",
+      },
+    ],
+    visualLabel: "Comparación de estrategias de recomendación",
+    visualLegend: ["Popularidad", "Coocurrencia", "Afinidad de categoría"],
   },
   background: {
     eyebrow: "Trayectoria profesional",

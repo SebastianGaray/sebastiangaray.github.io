@@ -26,6 +26,20 @@ export interface PortfolioContent {
     technologyLabel: string;
     technologies: string[];
     links: { demo: string; repository: string; release: string };
+    availability: string;
+    highlightsTitle: string;
+    highlights: { title: string; description: string }[];
+    visualLabel: string;
+    visualLegend: string[];
+  };
+  recommendationProject: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    synthetic: string;
+    technologyLabel: string;
+    technologies: string[];
+    links: { demo: string; repository: string };
     highlightsTitle: string;
     highlights: { title: string; description: string }[];
     visualLabel: string;

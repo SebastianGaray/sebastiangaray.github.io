@@ -530,6 +530,10 @@ h3 {
   background: var(--surface);
 }
 
+.project-continuation {
+  border-top: 1px solid var(--border);
+}
+
 .project-layout {
   display: grid;
   gap: 2.5rem;
@@ -710,6 +714,17 @@ h3 {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
   color: var(--accent-contrast);
+}
+
+.project-links-two a:last-child {
+  grid-column: 1 / -1;
+}
+
+.availability-note {
+  margin: 0.75rem 0 0;
+  color: var(--warning);
+  font-size: 0.76rem;
+  line-height: 1.55;
 }
 
 .two-column {

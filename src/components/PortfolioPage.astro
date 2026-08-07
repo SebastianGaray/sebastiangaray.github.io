@@ -249,23 +249,29 @@ const { content } = Astro.props;
 
     <section
       class="credentials section-block"
-      aria-label={content.credentials.educationTitle}
+      aria-labelledby="credentials-title"
     >
-      <div class="section-shell credentials-grid" data-assembly>
-        <article>
-          <h2>{content.credentials.educationTitle}</h2>
-          <ul>
-            {content.credentials.education.map((item) => <li>{item}</li>)}
-          </ul>
-        </article>
-        <article>
-          <h2>{content.credentials.publicationTitle}</h2>
-          <p>{content.credentials.publication}</p>
-        </article>
-        <article>
-          <h2>{content.credentials.recognitionTitle}</h2>
-          <p>{content.credentials.recognition}</p>
-        </article>
+      <div class="section-shell">
+        <header class="section-header" data-assembly>
+          <p class="eyebrow">{content.credentials.eyebrow}</p>
+          <h2 id="credentials-title">{content.credentials.title}</h2>
+        </header>
+        <div class="credentials-grid" data-assembly>
+          <article>
+            <h3>{content.credentials.educationTitle}</h3>
+            <ul>
+              {content.credentials.education.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+          <article>
+            <h3>{content.credentials.publicationTitle}</h3>
+            <p>{content.credentials.publication}</p>
+          </article>
+          <article>
+            <h3>{content.credentials.recognitionTitle}</h3>
+            <p>{content.credentials.recognition}</p>
+          </article>
+        </div>
       </div>
     </section>
   </div>

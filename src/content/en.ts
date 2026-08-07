@@ -113,8 +113,8 @@ export const content = {
     ],
   },
   focus: {
-    eyebrow: "Technical focus",
-    title: "Technical areas",
+    eyebrow: "Capabilities",
+    title: "Technical focus",
     areas: [
       {
         title: "Backend and Software Engineering",
@@ -143,7 +143,7 @@ export const content = {
     ],
   },
   leadership: {
-    eyebrow: "Leadership and teaching",
+    eyebrow: "How I work",
     title: "Leadership and teaching",
     description:
       "I connect engineering decisions with business constraints, help teams deliver maintainable software and teach technical topics with practical context.",
@@ -155,6 +155,8 @@ export const content = {
     ],
   },
   credentials: {
+    eyebrow: "Background",
+    title: "Education, publications and recognition",
     educationTitle: "Education",
     education: [
       "Master’s degree in Computer Science — Universidad de Santiago de Chile",
@@ -168,8 +170,8 @@ export const content = {
     recognition: "Professional recognition received in 2021, 2022 and 2024.",
   },
   contact: {
-    eyebrow: "Contact",
-    title: "Contact",
+    eyebrow: "Let’s connect",
+    title: "Get in touch",
     description:
       "Email is the most direct way to reach me. My public work and professional profile are also available below.",
   },

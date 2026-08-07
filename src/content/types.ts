@@ -63,6 +63,8 @@ export interface PortfolioContent {
     points: string[];
   };
   credentials: {
+    eyebrow: string;
+    title: string;
     educationTitle: string;
     education: string[];
     publicationTitle: string;

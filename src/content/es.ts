@@ -113,8 +113,8 @@ export const content = {
     ],
   },
   focus: {
-    eyebrow: "Foco técnico",
-    title: "Áreas técnicas",
+    eyebrow: "Capacidades",
+    title: "Enfoque técnico",
     areas: [
       {
         title: "Backend e Ingeniería de Software",
@@ -143,7 +143,7 @@ export const content = {
     ],
   },
   leadership: {
-    eyebrow: "Liderazgo y enseñanza",
+    eyebrow: "Cómo trabajo",
     title: "Liderazgo y docencia",
     description:
       "Conecto decisiones de ingeniería con restricciones de negocio, ayudo a los equipos a entregar software mantenible y enseño temas técnicos con contexto práctico.",
@@ -155,6 +155,8 @@ export const content = {
     ],
   },
   credentials: {
+    eyebrow: "Formación",
+    title: "Educación, publicaciones y reconocimientos",
     educationTitle: "Educación",
     education: [
       "Magíster en Ciencias de la Computación — Universidad de Santiago de Chile",
@@ -169,8 +171,8 @@ export const content = {
       "Reconocimientos profesionales recibidos en 2021, 2022 y 2024.",
   },
   contact: {
-    eyebrow: "Contacto",
-    title: "Contacto",
+    eyebrow: "Hablemos",
+    title: "Ponte en contacto",
     description:
       "El correo es la forma más directa de contactarme. Mi trabajo público y perfil profesional también están disponibles a continuación.",
   },

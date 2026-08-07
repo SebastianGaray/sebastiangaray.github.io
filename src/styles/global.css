@@ -1002,8 +1002,12 @@ h3 {
   border-color: var(--border-strong);
 }
 
-.scroll-cues [data-scroll-down]:not([hidden]) span {
+.scroll-cues button:not([hidden]) span {
   animation: scroll-invite 1.8s ease-in-out infinite;
+}
+
+.scroll-cues [data-scroll-up]:not([hidden]) span {
+  animation-direction: reverse;
 }
 
 @keyframes enter {

@@ -308,24 +308,14 @@ const { content } = Astro.props;
     </section>
   </div>
 
-  <nav
-    class="scroll-cues"
-    aria-label={content.lang === "en"
-      ? "Page position"
-      : "Posición en la página"}
-  >
-    <button
-      type="button"
-      data-scroll-up
-      aria-label={content.lang === "en" ? "Scroll up" : "Subir"}
-      hidden
-    >
+  <nav class="scroll-cues" aria-label={content.scroll.label}>
+    <button type="button" data-scroll-up aria-label={content.scroll.up} hidden>
       <span aria-hidden="true">↑</span>
     </button>
     <button
       type="button"
       data-scroll-down
-      aria-label={content.lang === "en" ? "Scroll down" : "Bajar"}
+      aria-label={content.scroll.down}
       hidden
     >
       <span aria-hidden="true">↓</span>
@@ -353,20 +343,54 @@ const { content } = Astro.props;
     const scrollDown =
       document.querySelector<HTMLButtonElement>("[data-scroll-down]");
 
-    const updateScrollCues = () => {
-      const top = window.scrollY;
-      const remaining =
-        document.documentElement.scrollHeight - window.innerHeight - top;
-      if (scrollUp) scrollUp.hidden = top < 24;
-      if (scrollDown) scrollDown.hidden = remaining < 24;
+    const visibleSections = () => [
+      ...document.querySelectorAll<HTMLElement>(
+        "[data-view]:not([hidden]) > section",
+      ),
+    ];
+
+    const sectionPosition = () => {
+      const sections = visibleSections();
+      const marker = window.scrollY + 96;
+      let currentIndex = 0;
+      sections.forEach((section, index) => {
+        if (section.offsetTop <= marker) currentIndex = index;
+      });
+      return { sections, currentIndex, marker };
     };
 
-    scrollUp?.addEventListener("click", () => {
-      window.scrollBy({ top: -window.innerHeight * 0.78, behavior: "smooth" });
-    });
-    scrollDown?.addEventListener("click", () => {
-      window.scrollBy({ top: window.innerHeight * 0.78, behavior: "smooth" });
-    });
+    const updateScrollCues = () => {
+      const { sections, currentIndex } = sectionPosition();
+      const current = sections[currentIndex];
+      if (!current) return;
+      const nearCurrentStart =
+        Math.abs(window.scrollY - current.offsetTop) < 48 ||
+        (currentIndex === 0 && window.scrollY < 48);
+      if (scrollUp) scrollUp.hidden = currentIndex === 0 && nearCurrentStart;
+      if (scrollDown) scrollDown.hidden = currentIndex >= sections.length - 1;
+    };
+
+    const scrollToSection = (direction: -1 | 1) => {
+      const { sections, currentIndex } = sectionPosition();
+      const current = sections[currentIndex];
+      if (!current) return;
+      const nearCurrentStart =
+        Math.abs(window.scrollY - current.offsetTop) < 48 ||
+        (currentIndex === 0 && window.scrollY < 48);
+      const targetIndex =
+        direction === 1
+          ? currentIndex + 1
+          : nearCurrentStart
+            ? currentIndex - 1
+            : currentIndex;
+      sections[targetIndex]?.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "start",
+      });
+    };
+
+    scrollUp?.addEventListener("click", () => scrollToSection(-1));
+    scrollDown?.addEventListener("click", () => scrollToSection(1));
     window.addEventListener("scroll", updateScrollCues, { passive: true });
     window.addEventListener("resize", updateScrollCues);
 

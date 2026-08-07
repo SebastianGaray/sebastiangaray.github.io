@@ -4,15 +4,17 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import themeInit from "../scripts/theme-init.js?raw";
 import "../styles/global.css";
+import { getAbsoluteLocaleUrl } from "astro:i18n";
+import { getLocaleConfig } from "../i18n/config";
 
 interface Props {
   content: PortfolioContent;
 }
 
 const { content } = Astro.props;
-const canonical = new URL(`/${content.lang}/`, Astro.site);
-const alternateLanguage = content.lang === "en" ? "es" : "en";
-const alternate = new URL(`/${alternateLanguage}/`, Astro.site);
+const locale = getLocaleConfig(content.lang);
+const canonical = getAbsoluteLocaleUrl(content.lang);
+const alternate = getAbsoluteLocaleUrl(locale.alternate);
 const image = new URL("/social-card.svg", Astro.site);
 ---
 
@@ -27,11 +29,11 @@ const image = new URL("/social-card.svg", Astro.site);
     <script is:inline set:html={themeInit} />
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang={content.lang} href={canonical} />
-    <link rel="alternate" hreflang={alternateLanguage} href={alternate} />
+    <link rel="alternate" hreflang={locale.alternate} href={alternate} />
     <link
       rel="alternate"
       hreflang="x-default"
-      href={new URL("/en/", Astro.site)}
+      href={getAbsoluteLocaleUrl("en")}
     />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
@@ -39,13 +41,10 @@ const image = new URL("/social-card.svg", Astro.site);
     <meta property="og:description" content={content.meta.description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={image} />
-    <meta
-      property="og:locale"
-      content={content.lang === "en" ? "en_US" : "es_CL"}
-    />
+    <meta property="og:locale" content={locale.ogLocale} />
     <meta
       property="og:locale:alternate"
-      content={content.lang === "en" ? "es_CL" : "en_US"}
+      content={getLocaleConfig(locale.alternate).ogLocale}
     />
     <meta name="twitter:card" content="summary_large_image" />
     <title>{content.meta.title}</title>

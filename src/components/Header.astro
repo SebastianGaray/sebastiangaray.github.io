@@ -1,13 +1,16 @@
 ---
 import type { PortfolioContent } from "../content/types";
 import ThemeControl from "./ThemeControl.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLocaleConfig } from "../i18n/config";
 
 interface Props {
   content: PortfolioContent;
 }
 
 const { content } = Astro.props;
-const alternateLanguage = content.lang === "en" ? "ES" : "EN";
+const locale = getLocaleConfig(content.lang);
+const alternateHref = getRelativeLocaleUrl(locale.alternate);
 ---
 
 <header class="site-header">
@@ -28,9 +31,9 @@ const alternateLanguage = content.lang === "en" ? "ES" : "EN";
       <ThemeControl content={content} />
       <a
         class="language-switch"
-        href={`${content.languageHref}#home`}
+        href={`${alternateHref}#home`}
         data-language-switch
-        hreflang={alternateLanguage.toLowerCase()}
+        hreflang={locale.alternate}
       >
         <span class:list={[content.lang === "en" && "active"]}>EN</span>
         <span aria-hidden="true">/</span>

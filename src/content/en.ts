@@ -179,4 +179,9 @@ export const content = {
     email: "Email",
     builtWith: "Built with Astro.",
   },
+  scroll: {
+    label: "Page position",
+    up: "Previous section",
+    down: "Next section",
+  },
 } satisfies PortfolioContent;

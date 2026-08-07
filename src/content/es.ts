@@ -180,4 +180,9 @@ export const content = {
     email: "Correo",
     builtWith: "Construido con Astro.",
   },
+  scroll: {
+    label: "Posición en la página",
+    up: "Sección anterior",
+    down: "Sección siguiente",
+  },
 } satisfies PortfolioContent;

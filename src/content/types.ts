@@ -81,4 +81,9 @@ export interface PortfolioContent {
     email: string;
     builtWith: string;
   };
+  scroll: {
+    label: string;
+    up: string;
+    down: string;
+  };
 }

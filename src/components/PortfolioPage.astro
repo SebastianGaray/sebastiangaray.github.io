@@ -308,6 +308,30 @@ const { content } = Astro.props;
     </section>
   </div>
 
+  <nav
+    class="scroll-cues"
+    aria-label={content.lang === "en"
+      ? "Page position"
+      : "Posición en la página"}
+  >
+    <button
+      type="button"
+      data-scroll-up
+      aria-label={content.lang === "en" ? "Scroll up" : "Subir"}
+      hidden
+    >
+      <span aria-hidden="true">↑</span>
+    </button>
+    <button
+      type="button"
+      data-scroll-down
+      aria-label={content.lang === "en" ? "Scroll down" : "Bajar"}
+      hidden
+    >
+      <span aria-hidden="true">↓</span>
+    </button>
+  </nav>
+
   <script>
     const views = new Map(
       [...document.querySelectorAll<HTMLElement>("[data-view]")].map((view) => [
@@ -324,6 +348,27 @@ const { content } = Astro.props;
     ).matches;
     let currentView = "home";
     let transitioning = false;
+    const scrollUp =
+      document.querySelector<HTMLButtonElement>("[data-scroll-up]");
+    const scrollDown =
+      document.querySelector<HTMLButtonElement>("[data-scroll-down]");
+
+    const updateScrollCues = () => {
+      const top = window.scrollY;
+      const remaining =
+        document.documentElement.scrollHeight - window.innerHeight - top;
+      if (scrollUp) scrollUp.hidden = top < 24;
+      if (scrollDown) scrollDown.hidden = remaining < 24;
+    };
+
+    scrollUp?.addEventListener("click", () => {
+      window.scrollBy({ top: -window.innerHeight * 0.78, behavior: "smooth" });
+    });
+    scrollDown?.addEventListener("click", () => {
+      window.scrollBy({ top: window.innerHeight * 0.78, behavior: "smooth" });
+    });
+    window.addEventListener("scroll", updateScrollCues, { passive: true });
+    window.addEventListener("resize", updateScrollCues);
 
     const setActiveNavigation = (viewName: string) => {
       document
@@ -415,6 +460,7 @@ const { content } = Astro.props;
       document.body.classList.remove("is-transitioning");
       target.focus({ preventScroll: true });
       transitioning = false;
+      requestAnimationFrame(updateScrollCues);
     };
 
     document
@@ -439,5 +485,6 @@ const { content } = Astro.props;
       currentView = initialView;
     }
     setActiveNavigation(currentView);
+    requestAnimationFrame(updateScrollCues);
   </script>
 </BaseLayout>

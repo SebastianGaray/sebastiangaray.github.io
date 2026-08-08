@@ -1,4 +1,4 @@
-# Requirements
+# Specification
 
 ## Product
 
@@ -21,3 +21,4 @@
 - Validate formatting, types, unit behavior, accessibility, production output, and dependency safety.
 - Deploy only validated `main` builds with least-privilege GitHub Pages permissions.
 - Maintain dependencies with Dependabot and scan JavaScript/TypeScript with CodeQL.
+- Keep the repository overview concise, personal, factual, and connected to the live portfolio.

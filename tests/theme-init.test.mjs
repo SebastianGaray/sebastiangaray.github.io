@@ -3,10 +3,8 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import vm from "node:vm";
 
-const source = readFileSync(
-  new URL("../src/scripts/theme-init.js", import.meta.url),
-  "utf8",
-);
+const sourceUrl = new URL("../src/scripts/theme-init.js", import.meta.url);
+const source = readFileSync(sourceUrl, "utf8");
 
 class EventTarget {
   listeners = new Map();
@@ -46,18 +44,22 @@ const loadTheme = ({ saved = null, systemDark = false } = {}) => {
   media.matches = systemDark;
   window.matchMedia = () => media;
 
-  vm.runInNewContext(source, {
-    CustomEvent,
-    document: {
-      documentElement: { dataset },
-      querySelector: () => meta,
+  vm.runInNewContext(
+    source,
+    {
+      CustomEvent,
+      document: {
+        documentElement: { dataset },
+        querySelector: () => meta,
+      },
+      localStorage: {
+        getItem: (key) => stored.get(key) ?? null,
+        setItem: (key, value) => stored.set(key, value),
+      },
+      window,
     },
-    localStorage: {
-      getItem: (key) => stored.get(key) ?? null,
-      setItem: (key, value) => stored.set(key, value),
-    },
-    window,
-  });
+    { filename: sourceUrl.pathname },
+  );
 
   const select = (preference) =>
     window.dispatchEvent(

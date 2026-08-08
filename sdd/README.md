@@ -4,8 +4,8 @@ This directory records the specifications used to guide the portfolio implementa
 define observable outcomes, design describes the chosen technical approach, and tasks map completed
 work to validation evidence.
 
-- `requirements.md`: product and quality requirements.
-- `design.md`: architecture and implementation decisions.
+- [`spec.md`](spec.md): product and quality requirements.
+- [`plan.md`](plan.md): architecture and implementation decisions.
 - `tasks.md`: completed implementation and verification tasks.
 
 Specifications are maintained with the code. A change is complete only when its requirement,

@@ -10,3 +10,4 @@
 - [x] Add dependency auditing, Dependabot, CodeQL, and pinned workflow actions.
 - [x] Restrict Pages write permissions to the deployment job.
 - [x] Document contribution, security, licensing, and spec-driven development.
+- [x] Standardize the SDD file names and refine the portfolio README.

@@ -1,4 +1,4 @@
-# Design
+# Implementation plan
 
 ## Architecture
 
@@ -17,3 +17,8 @@ contract. No visitor data leaves the browser.
 Node tests isolate theme behavior. Playwright validates production routes, navigation, responsive
 layouts, public files, and automated accessibility rules. Astro Check and Prettier enforce typed,
 consistent source. npm audit, CodeQL, pinned actions, and Dependabot cover supply-chain risk.
+
+## Repository presentation
+
+The README acts as a short profile entry point. It uses one portrait, a compact project table, direct
+demo links, practical setup instructions, and plain descriptions of SDD and AI-assisted work.

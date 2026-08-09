@@ -100,6 +100,45 @@ export const content = {
     visualLabel: "Recommendation strategy comparison",
     visualLegend: ["Popularity", "Co-occurrence", "Category-aware"],
   },
+  sketchProject: {
+    eyebrow: "Browser ML demo",
+    title: "SketchSense",
+    description:
+      "A private, browser-local sketch classifier for 16 Quick, Draw! categories. Visitors draw on a responsive canvas, inspect the exact normalized model input and receive live predictions from a versioned ONNX model.",
+    badge: "Local inference",
+    technologyLabel: "Technologies",
+    technologies: [
+      "PyTorch",
+      "ONNX Runtime Web",
+      "Astro",
+      "TypeScript",
+      "Playwright",
+    ],
+    links: {
+      demo: "Live demo",
+      repository: "GitHub repository",
+    },
+    highlightsTitle: "Implementation highlights",
+    highlights: [
+      {
+        title: "Vector-native training",
+        description:
+          "The released model uses 160,000 official Quick, Draw! vector sketches and reaches 94.61% held-out macro F1.",
+      },
+      {
+        title: "Inspectable local inference",
+        description:
+          "The canvas, centered 28 × 28 tensor, predictions and measured timings stay in the browser.",
+      },
+      {
+        title: "Honest uncertainty",
+        description:
+          "Weak or closely matched scores produce an explicit uncertain state instead of a confident claim.",
+      },
+    ],
+    visualLabel: "Browser-local sketch classification",
+    visualLegend: ["Canvas", "28 × 28 tensor", "Top-3 predictions"],
+  },
   background: {
     eyebrow: "Professional background",
     title: "Professional experience",

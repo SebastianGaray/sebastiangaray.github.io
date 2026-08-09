@@ -8,6 +8,8 @@
 - Organize Home, Demos, About, and Contact as keyboard-accessible views.
 - Provide compact animated controls for moving between visible sections.
 - Explain external demo availability without hiding hosting limitations.
+- Present SketchSense as a third bilingual demo with direct live and repository links.
+- State that SketchSense performs browser-local inference and expose measured model evidence without inflated claims.
 
 ## Web quality
 

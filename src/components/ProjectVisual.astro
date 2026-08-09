@@ -2,7 +2,7 @@
 interface Props {
   label: string;
   legend: string[];
-  variant?: "forecast" | "recommendation";
+  variant?: "forecast" | "recommendation" | "sketch";
 }
 
 const { label, legend, variant = "forecast" } = Astro.props;
@@ -62,7 +62,7 @@ const { label, legend, variant = "forecast" } = Astro.props;
             </>
           </g>
         </>
-      ) : (
+      ) : variant === "recommendation" ? (
         <g>
           {[
             { x: 118, height: 158 },
@@ -88,6 +88,72 @@ const { label, legend, variant = "forecast" } = Astro.props;
               >
                 {String(index + 1).padStart(2, "0")}
               </text>
+            </g>
+          ))}
+        </g>
+      ) : (
+        <g>
+          <rect
+            x="86"
+            y="92"
+            width="260"
+            height="260"
+            fill="var(--surface)"
+            stroke="var(--border-strong)"
+            stroke-width="3"
+          />
+          <path
+            d="M151 260c-12-61 24-115 69-119 48-4 91 45 76 110-10 45-41 72-79 71-31-1-58-23-66-62Z"
+            fill="none"
+            stroke="var(--text-primary)"
+            stroke-width="9"
+            stroke-linecap="round"
+          />
+          <path
+            d="m161 177 25-41 24 34m49 0 25-34 11 48M184 227h1m69 0h1m-52 39c17 15 35 15 52 0"
+            fill="none"
+            stroke="var(--text-primary)"
+            stroke-width="8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <rect
+            x="389"
+            y="150"
+            width="112"
+            height="112"
+            fill="var(--surface)"
+            stroke="var(--border-strong)"
+            stroke-width="3"
+          />
+          <path
+            d="M413 231h14v-47h15v-12h18v13h17v46h-14v9h-36v-9h-14Z"
+            fill="var(--text-primary)"
+            opacity=".82"
+          />
+          {[
+            { y: 154, width: 164 },
+            { y: 213, width: 126 },
+            { y: 272, width: 82 },
+          ].map((bar, index) => (
+            <g>
+              <text
+                x="545"
+                y={bar.y + 17}
+                fill="var(--text-muted)"
+                font-family="JetBrains Mono, monospace"
+                font-size="13"
+              >
+                {String(index + 1).padStart(2, "0")}
+              </text>
+              <rect
+                x="580"
+                y={bar.y}
+                width={bar.width}
+                height="22"
+                fill={index === 0 ? "var(--accent)" : "var(--text-primary)"}
+                opacity={index === 2 ? ".5" : ".82"}
+              />
             </g>
           ))}
         </g>

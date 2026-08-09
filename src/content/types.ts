@@ -45,6 +45,19 @@ export interface PortfolioContent {
     visualLabel: string;
     visualLegend: string[];
   };
+  sketchProject: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    badge: string;
+    technologyLabel: string;
+    technologies: string[];
+    links: { demo: string; repository: string };
+    highlightsTitle: string;
+    highlights: { title: string; description: string }[];
+    visualLabel: string;
+    visualLegend: string[];
+  };
   background: {
     eyebrow: string;
     title: string;

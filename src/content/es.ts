@@ -100,6 +100,45 @@ export const content = {
     visualLabel: "Comparación de estrategias de recomendación",
     visualLegend: ["Popularidad", "Coocurrencia", "Afinidad de categoría"],
   },
+  sketchProject: {
+    eyebrow: "Demo de ML en navegador",
+    title: "SketchSense",
+    description:
+      "Un clasificador privado y local de dibujos para 16 categorías de Quick, Draw! Quienes visitan la demo dibujan en un canvas adaptable, inspeccionan la entrada normalizada exacta y reciben predicciones en vivo desde un modelo ONNX versionado.",
+    badge: "Inferencia local",
+    technologyLabel: "Tecnologías",
+    technologies: [
+      "PyTorch",
+      "ONNX Runtime Web",
+      "Astro",
+      "TypeScript",
+      "Playwright",
+    ],
+    links: {
+      demo: "Demo en vivo",
+      repository: "Repositorio en GitHub",
+    },
+    highlightsTitle: "Aspectos de implementación",
+    highlights: [
+      {
+        title: "Entrenamiento vectorial",
+        description:
+          "El modelo publicado usa 160.000 dibujos vectoriales oficiales de Quick, Draw! y alcanza 94,61 % de F1 macro reservado.",
+      },
+      {
+        title: "Inferencia local inspeccionable",
+        description:
+          "El canvas, tensor centrado de 28 × 28, predicciones y tiempos medidos permanecen en el navegador.",
+      },
+      {
+        title: "Incertidumbre explícita",
+        description:
+          "Las puntuaciones débiles o muy cercanas producen un estado incierto en lugar de una afirmación confiada.",
+      },
+    ],
+    visualLabel: "Clasificación local de dibujos en el navegador",
+    visualLegend: ["Canvas", "Tensor 28 × 28", "Predicciones top-3"],
+  },
   background: {
     eyebrow: "Trayectoria profesional",
     title: "Experiencia profesional",

@@ -29,6 +29,8 @@ education, publications, and contact information in English and Spanish.
 The Streamlit demo may be asleep after a period of inactivity. Streamlit lets visitors wake it from
 the page, which can take a few minutes.
 
+Release history is recorded in [CHANGELOG.md](CHANGELOG.md).
+
 ## Technology
 
 - Astro and strict TypeScript

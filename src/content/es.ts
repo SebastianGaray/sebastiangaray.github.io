@@ -42,7 +42,7 @@ export const content = {
     links: {
       demo: "Demo en vivo",
       repository: "Repositorio en GitHub",
-      release: "Versión v0.1.0",
+      release: "Versión v1.0.0",
     },
     availability:
       "Alojada en Streamlit Community Cloud. Si la aplicación está suspendida, reactívala desde la pantalla de Streamlit y espera unos minutos mientras inicia.",

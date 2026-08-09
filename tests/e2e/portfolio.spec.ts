@@ -28,6 +28,11 @@ for (const locale of ["en", "es"] as const) {
       .first();
     await projects.click();
     await expect(page.locator('[data-view="projects"]')).toBeVisible();
+    await expect(page.locator("[data-global-controls]")).toBeVisible();
+    await expect(page.locator('[data-global-control="theme"]')).toBeVisible();
+    await expect(
+      page.locator('[data-global-control="language"]'),
+    ).toBeVisible();
     await expect(
       page.getByRole("heading", { name: "SketchSense" }),
     ).toBeVisible();

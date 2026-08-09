@@ -85,9 +85,18 @@ No disabled state is currently implemented. If required, it must remain perceiva
 
 System is the initial preference. An inline head script reads `theme-preference`, resolves `prefers-color-scheme`, writes concrete `data-theme` and `data-theme-preference` values before paint, and updates the browser theme color. Light and Dark overrides persist in local storage. System resumes live operating-system updates; explicit overrides ignore them until System is reselected. The three-option disclosure communicates selection through `aria-pressed`, background, weight and a checkmark. Dark is warm charcoal rather than black; Light is warm pink-white rather than neutral white.
 
+The disclosure is the canonical portfolio-family theme control. It belongs in the persistent header,
+precedes language, uses a compact summary rather than three permanently visible buttons or a select,
+and remains available at desktop and mobile widths.
+
 ## 11. Navigation
 
 The sticky header contains the name, section navigation, theme control, EN/ES switch, GitHub mark and a mobile disclosure. At desktop width the primary sections are visible; below `64rem` the disclosure carries them. View changes update the hash, history, focus and `aria-current`. Language changes retain the current section. Project applications must provide a clear, persistent or contextually prominent return link to `https://sebastiangaray.github.io/`, localized where applicable.
+
+Theme and language form the canonical global-control group in that order. Language uses `EN / ES`,
+marks the active locale with weight and underline, and may collapse the active locale and separator on
+narrow screens so the alternate destination remains compact. Stateful global controls are not moved
+to or duplicated in the footer by default.
 
 ## 12. Cards and surfaces
 

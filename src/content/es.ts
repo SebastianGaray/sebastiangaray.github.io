@@ -28,7 +28,7 @@ export const content = {
     title:
       "Ingeniero de software enfocado en sistemas backend, datos, machine learning y liderazgo técnico.",
     description:
-      "Construyo sistemas mantenibles que conectan necesidades de negocio, arquitectura de software y entrega.",
+      "Seis años construyendo y modernizando sistemas de retail y comercio electrónico.",
     projectAction: "Ver demo",
   },
   project: {
@@ -46,7 +46,7 @@ export const content = {
     },
     availability:
       "Alojada en Streamlit Community Cloud. Si la aplicación está suspendida, reactívala desde la pantalla de Streamlit y espera unos minutos mientras inicia.",
-    highlightsTitle: "Aspectos de implementación",
+    highlightsTitle: "Detalles",
     highlights: [
       {
         title: "Validación temporal",
@@ -79,7 +79,7 @@ export const content = {
       demo: "Demo en vivo",
       repository: "Repositorio en GitHub",
     },
-    highlightsTitle: "Aspectos de implementación",
+    highlightsTitle: "Detalles",
     highlights: [
       {
         title: "Estrategias sensibles al carrito",
@@ -87,7 +87,7 @@ export const content = {
           "Quienes visitan la demo pueden comparar recomendaciones por popularidad, coocurrencia y afinidad de categoría mientras cambia el carrito.",
       },
       {
-        title: "Resultados explicables",
+        title: "Explicación de resultados",
         description:
           "Cada recomendación presenta una razón breve en lugar de mostrar un ranking opaco.",
       },
@@ -118,7 +118,7 @@ export const content = {
       demo: "Demo en vivo",
       repository: "Repositorio en GitHub",
     },
-    highlightsTitle: "Aspectos de implementación",
+    highlightsTitle: "Detalles",
     highlights: [
       {
         title: "Entrenamiento vectorial",
@@ -131,7 +131,7 @@ export const content = {
           "El canvas, tensor centrado de 28 × 28, predicciones y tiempos medidos permanecen en el navegador.",
       },
       {
-        title: "Incertidumbre explícita",
+        title: "Manejo de incertidumbre",
         description:
           "Las puntuaciones débiles o muy cercanas producen un estado incierto en lugar de una afirmación confiada.",
       },
@@ -152,7 +152,7 @@ export const content = {
     ],
   },
   focus: {
-    eyebrow: "Capacidades",
+    eyebrow: "Trabajo seleccionado",
     title: "Enfoque técnico",
     areas: [
       {
@@ -185,7 +185,7 @@ export const content = {
     eyebrow: "Cómo trabajo",
     title: "Liderazgo y docencia",
     description:
-      "Conecto decisiones de ingeniería con restricciones de negocio, ayudo a los equipos a entregar software mantenible y enseño temas técnicos con contexto práctico.",
+      "Decisiones técnicas, mentoría y docencia en temas de software y datos.",
     points: [
       "Decisiones técnicas y entrega",
       "Mentoría y mantenibilidad",
@@ -210,10 +210,9 @@ export const content = {
       "Reconocimientos profesionales recibidos en 2021, 2022 y 2024.",
   },
   contact: {
-    eyebrow: "Hablemos",
-    title: "Ponte en contacto",
-    description:
-      "El correo es la forma más directa de contactarme. Mi trabajo público y perfil profesional también están disponibles a continuación.",
+    eyebrow: "Contacto",
+    title: "Correo y perfiles",
+    description: "Correo, GitHub y LinkedIn.",
   },
   labels: {
     github: "GitHub",

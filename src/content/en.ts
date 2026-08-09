@@ -42,7 +42,7 @@ export const content = {
     links: {
       demo: "Live demo",
       repository: "GitHub repository",
-      release: "Release v0.1.0",
+      release: "Release v1.0.0",
     },
     availability:
       "Hosted on Streamlit Community Cloud. If the app is asleep, wake it from the Streamlit screen and allow a few minutes for startup.",

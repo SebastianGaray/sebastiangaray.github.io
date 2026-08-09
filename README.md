@@ -13,7 +13,7 @@ education, publications, and contact information in English and Spanish.
 ## What you will find
 
 - A concise professional profile focused on data science, machine learning, and software delivery.
-- Two end-to-end retail projects with live demos, architecture notes, tests, and honest limitations.
+- Three end-to-end projects with live demos, architecture notes, tests, and honest limitations.
 - English and Spanish content maintained as typed source modules rather than scattered conditions.
 - Accessible System, Light, and Dark themes with keyboard-friendly navigation.
 - Responsive layouts and section controls tested on desktop and mobile.
@@ -24,6 +24,7 @@ education, publications, and contact information in English and Spanish.
 | -------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
 | Retail Demand Intelligence | Synthetic demand forecasting, inventory risk, FastAPI, and Streamlit                  | [Open demo](https://retail-demand-intelligence.streamlit.app/)           |
 | Retail Recommendation Lab  | Explainable offline recommendations, PySpark artifacts, and a static Astro storefront | [Open demo](https://sebastiangaray.github.io/retail-recommendation-lab/) |
+| SketchSense                | Browser-local freehand classification, inspectable ONNX inference, and uncertainty UX | [Open demo](https://sebastiangaray.github.io/sketchsense/en/)            |
 
 The Streamlit demo may be asleep after a period of inactivity. Streamlit lets visitors wake it from
 the page, which can take a few minutes.

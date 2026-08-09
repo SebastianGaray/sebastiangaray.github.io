@@ -207,6 +207,66 @@ const { content } = Astro.props;
         </div>
       </div>
     </section>
+    <section
+      class="project view-section project-continuation"
+      aria-labelledby="sketch-project-title"
+      data-assembly
+    >
+      <div class="section-shell">
+        <header class="section-header">
+          <p class="eyebrow">{content.sketchProject.eyebrow}</p>
+          <h2 id="sketch-project-title">{content.sketchProject.title}</h2>
+          <div class="technology-list">
+            <span>{content.sketchProject.technologyLabel}</span>
+            <p>{content.sketchProject.technologies.join(" · ")}</p>
+          </div>
+        </header>
+        <div class="project-layout">
+          <div data-assembly>
+            <ProjectVisual
+              label={content.sketchProject.visualLabel}
+              legend={content.sketchProject.visualLegend}
+              variant="sketch"
+            />
+          </div>
+          <div class="project-copy" data-assembly>
+            <span class="chip">{content.sketchProject.badge}</span>
+            <p class="project-description">
+              {content.sketchProject.description}
+            </p>
+            <div class="project-links project-links-two">
+              <a
+                href={`https://sebastiangaray.github.io/sketchsense/${content.lang}/`}
+              >
+                {content.sketchProject.links.demo}<span aria-hidden="true">
+                  ↗</span
+                >
+              </a>
+              <a href="https://github.com/SebastianGaray/sketchsense">
+                {content.sketchProject.links.repository}<span
+                  aria-hidden="true"
+                >
+                  ↗</span
+                >
+              </a>
+            </div>
+            <div class="project-highlights">
+              <h2>{content.sketchProject.highlightsTitle}</h2>
+              <ol class="highlight-list">
+                {
+                  content.sketchProject.highlights.map((highlight) => (
+                    <li>
+                      <strong>{highlight.title}</strong>
+                      <span>{highlight.description}</span>
+                    </li>
+                  ))
+                }
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <div class="page-view" id="about" data-view="about" tabindex="-1" hidden>

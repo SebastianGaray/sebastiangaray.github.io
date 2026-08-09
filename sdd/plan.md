@@ -6,6 +6,9 @@ Astro renders static locale routes. Typed content modules contain visitor-facing
 components implement navigation, theme selection, projects, professional background, credentials,
 and contact. A small browser script owns view transitions and section-aware scroll controls.
 
+SketchSense follows the existing project-section contract with typed bilingual copy and a dedicated
+code-native visual. Its live link is locale-aware and points to the deployed GitHub Pages demo.
+
 ## State and accessibility
 
 Only the theme preference is persisted in `localStorage`. Native links, buttons, landmarks, heading

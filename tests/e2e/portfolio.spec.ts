@@ -28,6 +28,17 @@ for (const locale of ["en", "es"] as const) {
       .first();
     await projects.click();
     await expect(page.locator('[data-view="projects"]')).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "SketchSense" }),
+    ).toBeVisible();
+    await expect(
+      page.locator(
+        `a[href="https://sebastiangaray.github.io/sketchsense/${locale}/"]`,
+      ),
+    ).toBeVisible();
+    await expect(
+      page.locator('a[href="https://github.com/SebastianGaray/sketchsense"]'),
+    ).toBeVisible();
 
     const down = page.getByRole("button", {
       name: locale === "en" ? "Next section" : "Sección siguiente",

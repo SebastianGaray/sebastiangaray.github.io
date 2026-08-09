@@ -28,7 +28,7 @@ export const content = {
     title:
       "Software engineer focused on backend systems, data, machine learning and technical leadership.",
     description:
-      "I build maintainable systems that connect business needs, software architecture and delivery.",
+      "Six years building and modernizing retail and e-commerce systems.",
     projectAction: "View demo",
   },
   project: {
@@ -46,7 +46,7 @@ export const content = {
     },
     availability:
       "Hosted on Streamlit Community Cloud. If the app is asleep, wake it from the Streamlit screen and allow a few minutes for startup.",
-    highlightsTitle: "Implementation highlights",
+    highlightsTitle: "Details",
     highlights: [
       {
         title: "Time-based validation",
@@ -79,7 +79,7 @@ export const content = {
       demo: "Live demo",
       repository: "GitHub repository",
     },
-    highlightsTitle: "Implementation highlights",
+    highlightsTitle: "Details",
     highlights: [
       {
         title: "Cart-aware strategies",
@@ -87,7 +87,7 @@ export const content = {
           "Visitors can compare popularity, co-occurrence and category-aware recommendations as the cart changes.",
       },
       {
-        title: "Explainable results",
+        title: "Result explanations",
         description:
           "Each recommendation exposes a concise reason instead of presenting an opaque ranking.",
       },
@@ -118,7 +118,7 @@ export const content = {
       demo: "Live demo",
       repository: "GitHub repository",
     },
-    highlightsTitle: "Implementation highlights",
+    highlightsTitle: "Details",
     highlights: [
       {
         title: "Vector-native training",
@@ -131,7 +131,7 @@ export const content = {
           "The canvas, centered 28 × 28 tensor, predictions and measured timings stay in the browser.",
       },
       {
-        title: "Honest uncertainty",
+        title: "Uncertainty handling",
         description:
           "Weak or closely matched scores produce an explicit uncertain state instead of a confident claim.",
       },
@@ -152,7 +152,7 @@ export const content = {
     ],
   },
   focus: {
-    eyebrow: "Capabilities",
+    eyebrow: "Selected work",
     title: "Technical focus",
     areas: [
       {
@@ -185,7 +185,7 @@ export const content = {
     eyebrow: "How I work",
     title: "Leadership and teaching",
     description:
-      "I connect engineering decisions with business constraints, help teams deliver maintainable software and teach technical topics with practical context.",
+      "Technical decision-making, mentoring, and teaching across software and data topics.",
     points: [
       "Technical decision-making and delivery",
       "Mentoring and maintainability",
@@ -209,10 +209,9 @@ export const content = {
     recognition: "Professional recognition received in 2021, 2022 and 2024.",
   },
   contact: {
-    eyebrow: "Let’s connect",
-    title: "Get in touch",
-    description:
-      "Email is the most direct way to reach me. My public work and professional profile are also available below.",
+    eyebrow: "Contact",
+    title: "Email and profiles",
+    description: "Email, GitHub and LinkedIn.",
   },
   labels: {
     github: "GitHub",

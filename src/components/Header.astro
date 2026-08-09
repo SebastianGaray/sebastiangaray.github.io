@@ -27,10 +27,11 @@ const alternateHref = getRelativeLocaleUrl(locale.alternate);
       }
     </div>
 
-    <div class="nav-actions">
-      <ThemeControl content={content} />
+    <div class="nav-actions" data-global-controls>
+      <div data-global-control="theme"><ThemeControl content={content} /></div>
       <a
         class="language-switch"
+        data-global-control="language"
         href={`${alternateHref}#home`}
         data-language-switch
         hreflang={locale.alternate}

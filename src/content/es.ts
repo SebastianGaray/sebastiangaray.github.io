@@ -48,6 +48,33 @@ export const content = {
       { id: "retail", label: "Retail" },
     ],
   },
+  demoFraming: {
+    eyebrow: "Enfoque de proyectos",
+    title: "Preguntas exploradas mediante demos funcionales",
+    items: [
+      {
+        project: "Retail Demand Intelligence",
+        question: "¿Puedo construir ML para apoyar decisiones de negocio?",
+        href: "#project-title",
+      },
+      {
+        project: "Retail Recommendation Lab",
+        question: "¿Puedo construir sistemas de datos y recomendación?",
+        href: "#recommendation-project-title",
+      },
+      {
+        project: "SketchSense",
+        question: "¿Puedo entrenar y desplegar redes neuronales?",
+        href: "#sketch-project-title",
+      },
+      {
+        project: "Resilient Commerce Lab",
+        question:
+          "¿Puedo modelar cómo responden los sistemas ante fallos del mundo real?",
+        href: "#resilient-project-title",
+      },
+    ],
+  },
   project: {
     eyebrow: "Demo analítica",
     title: "Retail Demand Intelligence",
@@ -158,6 +185,41 @@ export const content = {
     ],
     visualLabel: "Clasificación local de dibujos en el navegador",
     visualLegend: ["Canvas", "Tensor 28 × 28", "Predicciones top-3"],
+  },
+  resilientProject: {
+    eyebrow: "Demo de sistemas distribuidos",
+    title: "Resilient Commerce Lab",
+    description:
+      "Una simulación determinista en el navegador para examinar cómo el tráfico, la degradación de dependencias y los controles acotados de resiliencia afectan métricas, trazas representativas y resultados simulados para clientes.",
+    badge: "Simulación · No es telemetría de producción",
+    technologyLabel: "Tecnologías",
+    technologies: [
+      "TypeScript",
+      "Astro",
+      "Simulación de eventos discretos",
+      "Playwright",
+    ],
+    links: { demo: "Ver demo", repository: "Repositorio en GitHub" },
+    status:
+      "Simulación estática en el navegador alojada en GitHub Pages. Las solicitudes, métricas y trazas mostradas son resultados simulados.",
+    highlightsTitle: "Detalles",
+    highlights: [
+      {
+        title: "Métricas causales",
+        description:
+          "Latencia, errores, reintentos, cola y circuito derivan de eventos simulados con semilla.",
+      },
+      {
+        title: "Controles de fallos y resiliencia",
+        description:
+          "Tráfico, fallos, caché, timeout, reintentos, jitter, límite de tasa y circuito se comparan con una base.",
+      },
+      {
+        title: "Vistas de cliente e ingeniería",
+        description:
+          "Una misma ejecución alimenta arquitectura, trazas, impacto para clientes y contexto prudente de producción.",
+      },
+    ],
   },
   background: {
     eyebrow: "Trayectoria profesional",

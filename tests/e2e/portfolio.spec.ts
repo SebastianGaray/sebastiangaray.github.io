@@ -56,7 +56,7 @@ for (const locale of ["en", "es"] as const) {
     );
 
     const demos = page.locator("[data-demo]");
-    await expect(demos.filter({ visible: true })).toHaveCount(3);
+    await expect(demos.filter({ visible: true })).toHaveCount(4);
     const neuralNetworks = page.getByRole("button", {
       name: new RegExp(
         locale === "en" ? "Neural networks" : "Redes neuronales",
@@ -77,7 +77,7 @@ for (const locale of ["en", "es"] as const) {
         name: new RegExp(locale === "en" ? "All" : "Todas"),
       })
       .click();
-    await expect(demos.filter({ visible: true })).toHaveCount(3);
+    await expect(demos.filter({ visible: true })).toHaveCount(4);
 
     for (const release of [
       "retail-demand-intelligence/releases/tag/v1.0.3",

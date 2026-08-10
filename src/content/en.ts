@@ -48,6 +48,32 @@ export const content = {
       { id: "retail", label: "Retail" },
     ],
   },
+  demoFraming: {
+    eyebrow: "Project framing",
+    title: "Questions explored through working demos",
+    items: [
+      {
+        project: "Retail Demand Intelligence",
+        question: "Can I build ML for business decisions?",
+        href: "#project-title",
+      },
+      {
+        project: "Retail Recommendation Lab",
+        question: "Can I build data and recommendation systems?",
+        href: "#recommendation-project-title",
+      },
+      {
+        project: "SketchSense",
+        question: "Can I train and deploy neural networks?",
+        href: "#sketch-project-title",
+      },
+      {
+        project: "Resilient Commerce Lab",
+        question: "Can I model how systems respond to real-world failure?",
+        href: "#resilient-project-title",
+      },
+    ],
+  },
   project: {
     eyebrow: "Analytics demo",
     title: "Retail Demand Intelligence",
@@ -158,6 +184,41 @@ export const content = {
     ],
     visualLabel: "Browser-local sketch classification",
     visualLegend: ["Canvas", "28 × 28 tensor", "Top-3 predictions"],
+  },
+  resilientProject: {
+    eyebrow: "Distributed systems demo",
+    title: "Resilient Commerce Lab",
+    description:
+      "A deterministic browser simulation for examining how traffic, dependency degradation and bounded resilience controls affect system metrics, representative traces and simulated customer outcomes.",
+    badge: "Simulation · Not production telemetry",
+    technologyLabel: "Technologies",
+    technologies: [
+      "TypeScript",
+      "Astro",
+      "Discrete-event simulation",
+      "Playwright",
+    ],
+    links: { demo: "View demo", repository: "GitHub repository" },
+    status:
+      "Static browser simulation hosted on GitHub Pages. Displayed requests, metrics and traces are simulated outputs.",
+    highlightsTitle: "Details",
+    highlights: [
+      {
+        title: "Causal metrics",
+        description:
+          "Latency, errors, retries, queue depth and circuit state derive from seeded simulation events.",
+      },
+      {
+        title: "Failure and resilience controls",
+        description:
+          "Traffic, faults, cache, timeout, retries, jitter, rate limiting and circuit behavior can be compared against a baseline.",
+      },
+      {
+        title: "Customer and engineering views",
+        description:
+          "The same run drives architecture activity, traces, customer impact and restrained production-context notes.",
+      },
+    ],
   },
   background: {
     eyebrow: "Professional background",

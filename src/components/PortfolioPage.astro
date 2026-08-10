@@ -12,6 +12,7 @@ const demoTags = {
   demand: ["python", "machine-learning", "data-engineering", "retail"],
   recommendation: ["python", "typescript", "data-engineering", "retail"],
   sketch: ["typescript", "machine-learning", "neural-networks"],
+  resilient: ["typescript", "distributed-systems"],
 };
 const demoCount = Object.keys(demoTags).length;
 const demoFilterOptions = content.demoFilter.options.map((option) => ({
@@ -130,6 +131,31 @@ const demoFilterOptions = content.demoFilter.options.map((option) => ({
             {content.demoFilter.results}
           </p>
         </div>
+      </div>
+    </section>
+    <section
+      class="demo-framing section-block"
+      aria-labelledby="demo-framing-title"
+    >
+      <div class="section-shell">
+        <header class="section-header" data-assembly>
+          <p class="eyebrow">{content.demoFraming.eyebrow}</p>
+          <h2 id="demo-framing-title">{content.demoFraming.title}</h2>
+        </header>
+        <ol class="demo-question-list" data-assembly>
+          {
+            content.demoFraming.items.map((item) => (
+              <li>
+                <a href={item.href}>
+                  <>
+                    <strong>{item.project}</strong>
+                    <span>{item.question}</span>
+                  </>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
       </div>
     </section>
     <section
@@ -336,6 +362,75 @@ const demoFilterOptions = content.demoFilter.options.map((option) => ({
                     <li>
                       <strong>{highlight.title}</strong>
                       <span>{highlight.description}</span>
+                    </li>
+                  ))
+                }
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="project view-section project-continuation"
+      aria-labelledby="resilient-project-title"
+      data-assembly
+      data-demo
+      data-demo-tags={demoTags.resilient.join(" ")}
+    >
+      <div class="section-shell">
+        <header class="section-header">
+          <p class="eyebrow">{content.resilientProject.eyebrow}</p>
+          <h2 id="resilient-project-title">{content.resilientProject.title}</h2>
+          <div class="technology-list">
+            <span>{content.resilientProject.technologyLabel}</span><p>
+              {content.resilientProject.technologies.join(" · ")}
+            </p>
+          </div>
+        </header>
+        <div class="project-layout">
+          <div
+            class="resilient-visual"
+            role="img"
+            aria-label={content.resilientProject.title}
+            data-assembly
+          >
+            <span>Client</span><i>→</i><span>Gateway</span><i>→</i><span
+              >Order</span
+            ><i>→</i><span>Dependency</span>
+          </div>
+          <div class="project-copy" data-assembly>
+            <span class="chip">{content.resilientProject.badge}</span>
+            <p class="project-description">
+              {content.resilientProject.description}
+            </p>
+            <div class="project-links">
+              <a
+                href={`https://sebastiangaray.github.io/resilient-commerce-lab/${content.lang}/`}
+                >{content.resilientProject.links.demo}<span aria-hidden="true">
+                  ↗</span
+                ></a
+              >
+              <a href="https://github.com/SebastianGaray/resilient-commerce-lab"
+                >{content.resilientProject.links.repository}<span
+                  aria-hidden="true"
+                >
+                  ↗</span
+                ></a
+              >
+            </div>
+            <p class="availability-note">{content.resilientProject.status}</p>
+            <div class="project-highlights">
+              <h2>{content.resilientProject.highlightsTitle}</h2><ol
+                class="highlight-list"
+              >
+                {
+                  content.resilientProject.highlights.map((highlight) => (
+                    <li>
+                      <>
+                        <strong>{highlight.title}</strong>
+                        <span>{highlight.description}</span>
+                      </>
                     </li>
                   ))
                 }

@@ -530,6 +530,87 @@ h3 {
   background: var(--surface);
 }
 
+.demo-explorer {
+  min-height: auto;
+  background: var(--background-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.demo-explorer-layout {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.demo-explorer header h1 {
+  max-width: 42rem;
+}
+
+.demo-explorer header > p:last-child {
+  max-width: 36rem;
+  margin: 1.25rem 0 0;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.demo-filter-panel {
+  align-self: end;
+  border-top: 1px solid var(--border-strong);
+}
+
+.demo-filter-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.demo-filter-options button {
+  min-height: 3.25rem;
+  padding: 0.75rem 0.85rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+  font: 600 0.8rem var(--font-body);
+  text-align: left;
+  cursor: pointer;
+}
+
+.demo-filter-options button:nth-child(2n) {
+  border-right: 0;
+}
+
+.demo-filter-options button:hover {
+  background: var(--surface-elevated);
+}
+
+.demo-filter-options button[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.demo-filter-options small {
+  min-width: 1.5rem;
+  font: 0.68rem var(--font-mono);
+  text-align: right;
+}
+
+.demo-filter-result {
+  margin: 0;
+  padding: 0.9rem 0;
+  color: var(--text-muted);
+  font: 0.72rem var(--font-mono);
+  text-align: right;
+}
+
+.demo-filter-result strong {
+  margin-right: 0.35rem;
+  color: var(--text-primary);
+}
+
 .project-continuation {
   border-top: 1px solid var(--border);
 }
@@ -714,10 +795,6 @@ h3 {
   background: var(--accent-hover);
   border-color: var(--accent-hover);
   color: var(--accent-contrast);
-}
-
-.project-links-two a:last-child {
-  grid-column: 1 / -1;
 }
 
 .availability-note {
@@ -1063,6 +1140,23 @@ h3 {
   .project-layout {
     grid-template-columns: minmax(0, 7fr) minmax(17rem, 5fr);
     gap: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .demo-explorer-layout {
+    grid-template-columns: minmax(0, 5fr) minmax(22rem, 7fr);
+    gap: clamp(3rem, 8vw, 7rem);
+  }
+
+  .demo-filter-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .demo-filter-options button:nth-child(2n) {
+    border-right: 1px solid var(--border);
+  }
+
+  .demo-filter-options button:nth-child(3n) {
+    border-right: 0;
   }
 
   .two-column {

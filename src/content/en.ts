@@ -31,8 +31,25 @@ export const content = {
       "Six years building and modernizing retail and e-commerce systems.",
     projectAction: "View demo",
   },
+  demoFilter: {
+    eyebrow: "Demo explorer",
+    title: "Filter by technology or knowledge area",
+    description:
+      "Choose a focus to compare the demos that put it into practice.",
+    result: "demo shown",
+    results: "demos shown",
+    options: [
+      { id: "all", label: "All" },
+      { id: "python", label: "Python" },
+      { id: "typescript", label: "TypeScript" },
+      { id: "machine-learning", label: "Machine learning" },
+      { id: "neural-networks", label: "Neural networks" },
+      { id: "data-engineering", label: "Data engineering" },
+      { id: "retail", label: "Retail" },
+    ],
+  },
   project: {
-    eyebrow: "Featured demo",
+    eyebrow: "Analytics demo",
     title: "Retail Demand Intelligence",
     description:
       "A retail demand forecasting and inventory-risk application built with synthetic data. It combines reproducible analysis with interfaces for exploration and local integration.",
@@ -42,7 +59,7 @@ export const content = {
     links: {
       demo: "Live demo",
       repository: "GitHub repository",
-      release: "Release v1.0.0",
+      release: "Release v1.0.3",
     },
     availability:
       "Hosted on Streamlit Community Cloud. If the app is asleep, wake it from the Streamlit screen and allow a few minutes for startup.",
@@ -78,6 +95,7 @@ export const content = {
     links: {
       demo: "Live demo",
       repository: "GitHub repository",
+      release: "Release v1.0.3",
     },
     highlightsTitle: "Details",
     highlights: [
@@ -104,11 +122,12 @@ export const content = {
     eyebrow: "Browser ML demo",
     title: "SketchSense",
     description:
-      "A private, browser-local sketch classifier for 16 Quick, Draw! categories. Visitors draw on a responsive canvas, inspect the exact normalized model input and receive live predictions from a versioned ONNX model.",
+      "A private, browser-local sketch classifier for 16 Quick, Draw! categories, powered by a convolutional neural network. Visitors draw on a responsive canvas, inspect the exact normalized model input and receive live predictions from a versioned ONNX model.",
     badge: "Local inference",
     technologyLabel: "Technologies",
     technologies: [
       "PyTorch",
+      "Convolutional neural network",
       "ONNX Runtime Web",
       "Astro",
       "TypeScript",
@@ -117,6 +136,7 @@ export const content = {
     links: {
       demo: "Live demo",
       repository: "GitHub repository",
+      release: "Release v1.0.1",
     },
     highlightsTitle: "Details",
     highlights: [

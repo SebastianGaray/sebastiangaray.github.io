@@ -44,6 +44,48 @@ for (const locale of ["en", "es"] as const) {
     await expect(
       page.locator('a[href="https://github.com/SebastianGaray/sketchsense"]'),
     ).toBeVisible();
+    await expect(page.getByText(/featured demo|demo destacada/i)).toHaveCount(
+      0,
+    );
+    await expect(
+      page.locator('[data-demo-tags~="neural-networks"] .technology-list'),
+    ).toContainText(
+      locale === "en"
+        ? "Convolutional neural network"
+        : "Red neuronal convolucional",
+    );
+
+    const demos = page.locator("[data-demo]");
+    await expect(demos.filter({ visible: true })).toHaveCount(3);
+    const neuralNetworks = page.getByRole("button", {
+      name: new RegExp(
+        locale === "en" ? "Neural networks" : "Redes neuronales",
+      ),
+    });
+    await neuralNetworks.click();
+    await expect(neuralNetworks).toHaveAttribute("aria-pressed", "true");
+    await expect(demos.filter({ visible: true })).toHaveCount(1);
+    await expect(
+      page.getByRole("heading", { name: "SketchSense" }),
+    ).toBeVisible();
+    await expect(page.locator("[data-demo-filter-result]")).toContainText(
+      locale === "en" ? "1 demo shown" : "1 demo visible",
+    );
+
+    await page
+      .getByRole("button", {
+        name: new RegExp(locale === "en" ? "All" : "Todas"),
+      })
+      .click();
+    await expect(demos.filter({ visible: true })).toHaveCount(3);
+
+    for (const release of [
+      "retail-demand-intelligence/releases/tag/v1.0.3",
+      "retail-recommendation-lab/releases/tag/v1.0.3",
+      "sketchsense/releases/tag/v1.0.1",
+    ]) {
+      await expect(page.locator(`a[href*="${release}"]`)).toBeVisible();
+    }
 
     const down = page.getByRole("button", {
       name: locale === "en" ? "Next section" : "Sección siguiente",

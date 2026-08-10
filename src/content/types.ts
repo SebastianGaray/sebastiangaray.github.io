@@ -18,6 +18,14 @@ export interface PortfolioContent {
     description: string;
     projectAction: string;
   };
+  demoFilter: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    result: string;
+    results: string;
+    options: { id: string; label: string }[];
+  };
   project: {
     eyebrow: string;
     title: string;
@@ -39,7 +47,7 @@ export interface PortfolioContent {
     synthetic: string;
     technologyLabel: string;
     technologies: string[];
-    links: { demo: string; repository: string };
+    links: { demo: string; repository: string; release: string };
     highlightsTitle: string;
     highlights: { title: string; description: string }[];
     visualLabel: string;
@@ -52,7 +60,7 @@ export interface PortfolioContent {
     badge: string;
     technologyLabel: string;
     technologies: string[];
-    links: { demo: string; repository: string };
+    links: { demo: string; repository: string; release: string };
     highlightsTitle: string;
     highlights: { title: string; description: string }[];
     visualLabel: string;

@@ -31,8 +31,25 @@ export const content = {
       "Seis años construyendo y modernizando sistemas de retail y comercio electrónico.",
     projectAction: "Ver demo",
   },
+  demoFilter: {
+    eyebrow: "Explorador de demos",
+    title: "Filtra por tecnología o área de conocimiento",
+    description:
+      "Elige un enfoque para comparar las demos que lo ponen en práctica.",
+    result: "demo visible",
+    results: "demos visibles",
+    options: [
+      { id: "all", label: "Todas" },
+      { id: "python", label: "Python" },
+      { id: "typescript", label: "TypeScript" },
+      { id: "machine-learning", label: "Machine learning" },
+      { id: "neural-networks", label: "Redes neuronales" },
+      { id: "data-engineering", label: "Ingeniería de datos" },
+      { id: "retail", label: "Retail" },
+    ],
+  },
   project: {
-    eyebrow: "Demo destacada",
+    eyebrow: "Demo analítica",
     title: "Retail Demand Intelligence",
     description:
       "Una aplicación de pronóstico de demanda y riesgo de inventario construida con datos sintéticos. Combina análisis reproducible con interfaces para exploración e integración local.",
@@ -42,7 +59,7 @@ export const content = {
     links: {
       demo: "Demo en vivo",
       repository: "Repositorio en GitHub",
-      release: "Versión v1.0.0",
+      release: "Versión v1.0.3",
     },
     availability:
       "Alojada en Streamlit Community Cloud. Si la aplicación está suspendida, reactívala desde la pantalla de Streamlit y espera unos minutos mientras inicia.",
@@ -78,6 +95,7 @@ export const content = {
     links: {
       demo: "Demo en vivo",
       repository: "Repositorio en GitHub",
+      release: "Versión v1.0.3",
     },
     highlightsTitle: "Detalles",
     highlights: [
@@ -104,11 +122,12 @@ export const content = {
     eyebrow: "Demo de ML en navegador",
     title: "SketchSense",
     description:
-      "Un clasificador privado y local de dibujos para 16 categorías de Quick, Draw! Quienes visitan la demo dibujan en un canvas adaptable, inspeccionan la entrada normalizada exacta y reciben predicciones en vivo desde un modelo ONNX versionado.",
+      "Un clasificador privado y local de dibujos para 16 categorías de Quick, Draw! impulsado por una red neuronal convolucional. Quienes visitan la demo dibujan en un canvas adaptable, inspeccionan la entrada normalizada exacta y reciben predicciones en vivo desde un modelo ONNX versionado.",
     badge: "Inferencia local",
     technologyLabel: "Tecnologías",
     technologies: [
       "PyTorch",
+      "Red neuronal convolucional",
       "ONNX Runtime Web",
       "Astro",
       "TypeScript",
@@ -117,6 +136,7 @@ export const content = {
     links: {
       demo: "Demo en vivo",
       repository: "Repositorio en GitHub",
+      release: "Versión v1.0.1",
     },
     highlightsTitle: "Detalles",
     highlights: [

@@ -8,6 +8,20 @@ interface Props {
 }
 
 const { content } = Astro.props;
+const demoTags = {
+  demand: ["python", "machine-learning", "data-engineering", "retail"],
+  recommendation: ["python", "typescript", "data-engineering", "retail"],
+  sketch: ["typescript", "machine-learning", "neural-networks"],
+};
+const demoCount = Object.keys(demoTags).length;
+const demoFilterOptions = content.demoFilter.options.map((option) => ({
+  ...option,
+  count:
+    option.id === "all"
+      ? demoCount
+      : Object.values(demoTags).filter((tags) => tags.includes(option.id))
+          .length,
+}));
 ---
 
 <BaseLayout content={content}>
@@ -77,9 +91,53 @@ const { content } = Astro.props;
     hidden
   >
     <section
+      class="demo-explorer view-section"
+      aria-labelledby="demo-filter-title"
+    >
+      <div class="section-shell demo-explorer-layout" data-assembly>
+        <header>
+          <p class="eyebrow">{content.demoFilter.eyebrow}</p>
+          <h1 id="demo-filter-title">{content.demoFilter.title}</h1>
+          <p>{content.demoFilter.description}</p>
+        </header>
+        <div class="demo-filter-panel">
+          <div
+            class="demo-filter-options"
+            role="group"
+            aria-labelledby="demo-filter-title"
+          >
+            {
+              demoFilterOptions.map((option) => (
+                <button
+                  type="button"
+                  data-demo-filter={option.id}
+                  aria-pressed={option.id === "all" ? "true" : "false"}
+                >
+                  <span>{option.label}</span>
+                  <small>{option.count}</small>
+                </button>
+              ))
+            }
+          </div>
+          <p
+            class="demo-filter-result"
+            aria-live="polite"
+            data-demo-filter-result
+            data-result-singular={content.demoFilter.result}
+            data-result-plural={content.demoFilter.results}
+          >
+            <strong>{demoCount}</strong>
+            {content.demoFilter.results}
+          </p>
+        </div>
+      </div>
+    </section>
+    <section
       class="project view-section"
       aria-labelledby="project-title"
       data-assembly
+      data-demo
+      data-demo-tags={demoTags.demand.join(" ")}
     >
       <div class="section-shell">
         <header class="section-header">
@@ -114,7 +172,7 @@ const { content } = Astro.props;
                 >
               </a>
               <a
-                href="https://github.com/SebastianGaray/retail-demand-intelligence/releases/tag/v1.0.0"
+                href="https://github.com/SebastianGaray/retail-demand-intelligence/releases/tag/v1.0.3"
               >
                 {content.project.links.release}<span aria-hidden="true">
                   ↗</span
@@ -145,6 +203,8 @@ const { content } = Astro.props;
       class="project view-section project-continuation"
       aria-labelledby="recommendation-project-title"
       data-assembly
+      data-demo
+      data-demo-tags={demoTags.recommendation.join(" ")}
     >
       <div class="section-shell">
         <header class="section-header">
@@ -170,7 +230,7 @@ const { content } = Astro.props;
             <p class="project-description">
               {content.recommendationProject.description}
             </p>
-            <div class="project-links project-links-two">
+            <div class="project-links">
               <a
                 href="https://sebastiangaray.github.io/retail-recommendation-lab/"
               >
@@ -184,6 +244,15 @@ const { content } = Astro.props;
                 href="https://github.com/SebastianGaray/retail-recommendation-lab"
               >
                 {content.recommendationProject.links.repository}<span
+                  aria-hidden="true"
+                >
+                  ↗</span
+                >
+              </a>
+              <a
+                href="https://github.com/SebastianGaray/retail-recommendation-lab/releases/tag/v1.0.3"
+              >
+                {content.recommendationProject.links.release}<span
                   aria-hidden="true"
                 >
                   ↗</span
@@ -211,6 +280,8 @@ const { content } = Astro.props;
       class="project view-section project-continuation"
       aria-labelledby="sketch-project-title"
       data-assembly
+      data-demo
+      data-demo-tags={demoTags.sketch.join(" ")}
     >
       <div class="section-shell">
         <header class="section-header">
@@ -234,7 +305,7 @@ const { content } = Astro.props;
             <p class="project-description">
               {content.sketchProject.description}
             </p>
-            <div class="project-links project-links-two">
+            <div class="project-links">
               <a
                 href={`https://sebastiangaray.github.io/sketchsense/${content.lang}/`}
               >
@@ -246,6 +317,13 @@ const { content } = Astro.props;
                 {content.sketchProject.links.repository}<span
                   aria-hidden="true"
                 >
+                  ↗</span
+                >
+              </a>
+              <a
+                href="https://github.com/SebastianGaray/sketchsense/releases/tag/v1.0.1"
+              >
+                {content.sketchProject.links.release}<span aria-hidden="true">
                   ↗</span
                 >
               </a>
@@ -409,11 +487,48 @@ const { content } = Astro.props;
     const scrollDown =
       document.querySelector<HTMLButtonElement>("[data-scroll-down]");
 
-    const visibleSections = () => [
-      ...document.querySelectorAll<HTMLElement>(
-        "[data-view]:not([hidden]) > section",
-      ),
+    const visibleSections = () =>
+      [
+        ...document.querySelectorAll<HTMLElement>(
+          "[data-view]:not([hidden]) > section",
+        ),
+      ].filter((section) => !section.hidden);
+
+    const demoSections = [
+      ...document.querySelectorAll<HTMLElement>("[data-demo]"),
     ];
+    const demoFilterResult = document.querySelector<HTMLElement>(
+      "[data-demo-filter-result]",
+    );
+
+    document
+      .querySelectorAll<HTMLButtonElement>("[data-demo-filter]")
+      .forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.demoFilter ?? "all";
+          let visibleCount = 0;
+          demoSections.forEach((demo) => {
+            const matches =
+              filter === "all" ||
+              (demo.dataset.demoTags ?? "").split(" ").includes(filter);
+            demo.hidden = !matches;
+            if (matches) visibleCount += 1;
+          });
+          document
+            .querySelectorAll<HTMLButtonElement>("[data-demo-filter]")
+            .forEach((option) => {
+              option.setAttribute("aria-pressed", String(option === button));
+            });
+          if (demoFilterResult) {
+            demoFilterResult.innerHTML = `<strong>${visibleCount}</strong> ${
+              visibleCount === 1
+                ? demoFilterResult.dataset.resultSingular
+                : demoFilterResult.dataset.resultPlural
+            }`;
+          }
+          requestAnimationFrame(updateScrollCues);
+        });
+      });
 
     const sectionPosition = () => {
       const sections = visibleSections();

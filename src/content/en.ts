@@ -198,9 +198,9 @@ export const content = {
       "Discrete-event simulation",
       "Playwright",
     ],
-    links: { demo: "Demo pending deployment", repository: "GitHub repository" },
+    links: { demo: "View demo", repository: "GitHub repository" },
     status:
-      "The public deployment is not live yet. The demo link will be enabled after its protected release completes.",
+      "Static browser simulation hosted on GitHub Pages. Displayed requests, metrics and traces are simulated outputs.",
     highlightsTitle: "Details",
     highlights: [
       {

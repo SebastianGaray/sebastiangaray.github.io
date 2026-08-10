@@ -405,8 +405,11 @@ const demoFilterOptions = content.demoFilter.options.map((option) => ({
               {content.resilientProject.description}
             </p>
             <div class="project-links">
-              <span class="project-link-pending" aria-disabled="true"
-                >{content.resilientProject.links.demo}</span
+              <a
+                href={`https://sebastiangaray.github.io/resilient-commerce-lab/${content.lang}/`}
+                >{content.resilientProject.links.demo}<span aria-hidden="true">
+                  ↗</span
+                ></a
               >
               <a href="https://github.com/SebastianGaray/resilient-commerce-lab"
                 >{content.resilientProject.links.repository}<span

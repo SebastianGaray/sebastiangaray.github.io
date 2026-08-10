@@ -199,12 +199,9 @@ export const content = {
       "Simulación de eventos discretos",
       "Playwright",
     ],
-    links: {
-      demo: "Demo pendiente de despliegue",
-      repository: "Repositorio en GitHub",
-    },
+    links: { demo: "Ver demo", repository: "Repositorio en GitHub" },
     status:
-      "El despliegue público aún no está disponible. El enlace se habilitará después de completar la publicación protegida.",
+      "Simulación estática en el navegador alojada en GitHub Pages. Las solicitudes, métricas y trazas mostradas son resultados simulados.",
     highlightsTitle: "Detalles",
     highlights: [
       {
